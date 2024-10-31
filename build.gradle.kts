@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.configureEach
-import org.gradle.kotlin.dsl.default
 import org.gradle.kotlin.dsl.ext
 import org.gradle.kotlin.dsl.ktor
 
