@@ -8,6 +8,7 @@ import io.ktor.server.auth.jwt.*
 import io.ktor.server.plugins.csrf.*
 
 fun Application.configureSecurity() {
+    // TODO: Add if condition to check if the environment is production
     install(CSRF) {
         // tests Origin is an expected value
         allowOrigin("http://localhost:8080")
