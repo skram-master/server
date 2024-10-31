@@ -27,7 +27,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     implementation(ktorLibs.ktor.server.core.jvm)
     implementation(ktorLibs.ktor.server.content.negotiation.jvm)
@@ -47,7 +46,9 @@ dependencies {
 }
 
 ktor {
-
+    fatJar {
+        archiveFileName.set("fat.jar")
+    }
 }
 
 tasks.withType<Test>().configureEach {
