@@ -1,6 +1,6 @@
-package com.example
+package com.skramMaster
 
-import com.example.plugins.*
+import com.skramMaster.plugins.*
 import io.ktor.server.application.*
 
 fun main(args: Array<String>) {
