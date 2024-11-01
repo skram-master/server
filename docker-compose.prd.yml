@@ -11,7 +11,7 @@ services:
       db:
         condition: service_healthy
     networks:
-      - app_network
+      - skram-master-server-network
     #    deploy:
     #      replicas: 3
     #      restart_policy:
@@ -36,7 +36,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - app_network
+      - skram-master-server-network
     env_file:
       - .prd.env
 
@@ -45,12 +45,13 @@ services:
     ports:
       - "5050:80"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
-      - app_network
+      - skram-master-server-network
     env_file:
       - .prd.env
 
 networks:
-  app_network:
+  skram-master-server-network:
     driver: bridge
