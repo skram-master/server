@@ -6,8 +6,6 @@ import io.ktor.server.application.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.plugins.defaultheaders.*
 import io.ktor.server.plugins.httpsredirect.*
-import io.ktor.server.plugins.swagger.*
-import io.ktor.server.routing.*
 
 fun Application.configureHTTP() {
     val isDevelopment = isDevelopment()
@@ -32,10 +30,10 @@ fun Application.configureHTTP() {
             anyHost()
         }
     }
-    routing {
-        swaggerUI(path = "openapi")
-    }
     install(DefaultHeaders) {
         header("X-Engine", "Ktor") // will send this header with each response
     }
+//    routing {
+//        swaggerUI(path = "openapi", swaggerFile = "openapi/documentation.yaml")
+//    }
 }

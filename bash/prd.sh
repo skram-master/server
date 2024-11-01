@@ -1,2 +1,1 @@
-./gradlew buildFatJar
-docker compose -f docker-compose.prd.yml up
+docker compose -f docker-compose.prd.yml --env-file .dev.prd up
