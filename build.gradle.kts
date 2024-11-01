@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.ext
 import org.gradle.kotlin.dsl.ktor
 
 val appVersion: String by project
@@ -15,10 +14,9 @@ version = appVersion
 
 
 application {
-    mainClass.set("io.ktor.server.netty.EngineMain")
-
-    val isDevelopment: Boolean = project.ext.has("development")
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+    mainClass.set("com.skramMaster.ApplicationKt")
+    // This arg passes the app when running the app from the gradle task
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
 repositories {

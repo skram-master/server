@@ -1,6 +1,5 @@
 package com.skramMaster.plugins
 
-import com.skramMaster.extensions.isDevelopment
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.cors.routing.*
@@ -8,7 +7,7 @@ import io.ktor.server.plugins.defaultheaders.*
 import io.ktor.server.plugins.httpsredirect.*
 
 fun Application.configureHTTP() {
-    val isDevelopment = isDevelopment()
+    val isDevelopment = developmentMode
     if (isDevelopment.not()) {
         install(HttpsRedirect) {
             // The port to redirect to. By default 443, the default HTTPS port.
