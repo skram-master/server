@@ -14,7 +14,8 @@ version = appVersion
 
 
 application {
-    mainClass.set("com.skramMaster.ApplicationKt")
+//    mainClass.set("com.skramMaster.ApplicationKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
     // This arg passes the app when running the app from the gradle task
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }

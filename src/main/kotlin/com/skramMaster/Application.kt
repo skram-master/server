@@ -5,22 +5,18 @@ import com.skramMaster.plugins.configureMonitoring
 import com.skramMaster.plugins.configureSecurity
 import com.skramMaster.plugins.configureSerialization
 import com.skramMaster.plugins.configureSockets
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
+import io.ktor.server.application.Application
 
-fun main(args: Array<String>) {
-    embeddedServer(
-        factory = Netty,
-        port = 8080,
-        watchPaths = listOf("classes"),
-    ) {
-        configureSerialization()
-        configureSecurity()
+fun main(args: Array<String>) = io.ktor.server.netty.EngineMain.main(args)
+
+fun Application.module() {
+    configureSerialization()
+    configureSecurity()
 //    configureHTTP()
-        configureDatabases()
-        configureSockets()
-        configureMonitoring()
-        configureRouting()
-    }.start(wait = true)
+    configureDatabases()
+    configureSockets()
+    configureMonitoring()
+    configureRouting()
 }
+
 
