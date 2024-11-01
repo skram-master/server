@@ -1,19 +1,22 @@
 package com.skramMaster
 
-import com.skramMaster.plugins.*
-import io.ktor.server.application.*
+import com.skramMaster.plugins.configureDatabases
+import com.skramMaster.plugins.configureMonitoring
+import com.skramMaster.plugins.configureSecurity
+import com.skramMaster.plugins.configureSerialization
+import com.skramMaster.plugins.configureSockets
+import io.ktor.server.engine.embeddedServer
+import io.ktor.server.netty.Netty
 
 fun main(args: Array<String>) {
-    // TODO: use Embedded server
-    io.ktor.server.netty.EngineMain.main(args)
+    embeddedServer(Netty, port = 8080, watchPaths = listOf("classes")) {
+        configureSerialization()
+        configureSecurity()
+//    configureHTTP()
+        configureDatabases()
+        configureSockets()
+        configureMonitoring()
+        configureRouting()
+    }.start(wait = true)
 }
 
-fun Application.module() {
-    configureSerialization()
-    configureSecurity()
-    configureHTTP()
-    configureDatabases()
-    configureSockets()
-    configureMonitoring()
-    configureRouting()
-}
