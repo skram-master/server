@@ -25,3 +25,5 @@ dependencyResolutionManagement {
         }
     }
 }
+
+include("infrastructure:ktorapp")
