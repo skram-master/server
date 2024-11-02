@@ -1,23 +1,24 @@
+import org.gradle.kotlin.dsl.ktor
 
-val kotlin_version: String by project
-val logback_version: String by project
-val postgres_version: String by project
-val h2_version: String by project
+val appVersion: String by project
 
 plugins {
-    kotlin("jvm") version "2.0.21"
-    id("io.ktor.plugin") version "3.0.0"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.21"
+    application
+    alias(kotlinLibs.plugins.kotlin.jvm)
+    alias(kotlinLibs.plugins.kotlin.serialization)
+    alias(ktorLibs.plugins.io.ktor)
+    alias(thirdPartyLibs.plugins.jooq.codegen) apply (false)
 }
 
-group = "com.example"
-version = "0.0.1"
+group = "com.skramMaster"
+version = appVersion
+
 
 application {
+//    mainClass.set("com.skramMaster.ApplicationKt")
     mainClass.set("io.ktor.server.netty.EngineMain")
-
-    val isDevelopment: Boolean = project.ext.has("development")
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+    // This arg passes the app when running the app from the gradle task
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
 repositories {
@@ -25,24 +26,31 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-content-negotiation-jvm")
-    implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
-    implementation("io.ktor:ktor-server-auth-jvm")
-    implementation("io.ktor:ktor-server-http-redirect-jvm")
-    implementation("org.postgresql:postgresql:$postgres_version")
-    implementation("com.h2database:h2:$h2_version")
-    implementation("io.ktor:ktor-server-websockets-jvm")
-    implementation("io.ktor:ktor-server-cors-jvm")
-    implementation("io.ktor:ktor-server-csrf-jvm")
-    implementation("io.ktor:ktor-server-call-logging-jvm")
-    implementation("io.ktor:ktor-server-swagger-jvm")
-    implementation("io.ktor:ktor-server-default-headers-jvm")
-    implementation("io.ktor:ktor-server-resources-jvm")
-    implementation("io.ktor:ktor-server-auth-jwt-jvm")
-    implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation("io.ktor:ktor-server-config-yaml")
-    testImplementation("io.ktor:ktor-server-test-host-jvm")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    implementation(ktorLibs.ktor.server.core.jvm)
+    implementation(ktorLibs.ktor.server.content.negotiation.jvm)
+    implementation(ktorLibs.ktor.serialization.kotlinx.json.jvm)
+    implementation(ktorLibs.ktor.server.auth.jvm)
+    implementation(ktorLibs.ktor.server.http.redirect.jvm)
+    implementation(ktorLibs.ktor.server.websockets.jvm)
+    implementation(ktorLibs.ktor.server.cors.jvm)
+    implementation(ktorLibs.ktor.server.csrf.jvm)
+    implementation(ktorLibs.ktor.server.call.logging.jvm)
+    implementation(ktorLibs.ktor.server.default.headers.jvm)
+    implementation(ktorLibs.ktor.server.resources.jvm)
+    implementation(ktorLibs.ktor.server.auth.jwt.jvm)
+    implementation(ktorLibs.ktor.server.netty.jvm)
+    implementation(ktorLibs.ktor.server.config.yaml)
+
+    implementation(thirdPartyLibs.ktor.swagger.ui)
 }
+
+ktor {
+    fatJar {
+        archiveFileName.set("fat.jar")
+    }
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+}
+

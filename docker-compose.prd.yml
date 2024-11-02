@@ -1,0 +1,57 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/ktor/prd.Dockerfile
+    ports:
+      - "80:8080"
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - skram-master-server-network
+    #    deploy:
+    #      replicas: 3
+    #      restart_policy:
+    #        condition: on-failure
+    env_file:
+      - .prd.env
+
+  db:
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    shm_size: 512mb
+    environment:
+      POSTGRES_INITDB_ARGS: "--data-checksums --auth-host=scram-sha-256"
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - skram-master-server-network
+    env_file:
+      - .prd.env
+
+  pgadmin:
+    image: dpage/pgadmin4:${PGADMIN_VERSION}
+    ports:
+      - "5050:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - skram-master-server-network
+    env_file:
+      - .prd.env
+
+networks:
+  skram-master-server-network:
+    driver: bridge

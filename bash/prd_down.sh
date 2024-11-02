@@ -1,0 +1,1 @@
+docker compose -f docker-compose.prd.yml --env-file .prd.env down
