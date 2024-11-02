@@ -1,7 +1,6 @@
 package com.skramMaster
 
-import com.skramMaster.extension.get
-import com.skramMaster.route.Articles
+import com.skramMaster.route.resourceRoute
 import io.ktor.server.application.*
 import io.ktor.server.resources.Resources
 import io.ktor.server.response.respondText
@@ -16,23 +15,7 @@ fun Application.configureRouting() {
         get("/") {
             call.respondText("Hello, world!")
         }
-
-        get<Articles>(
-            {
-                description = "Get all articles"
-                request {
-                    queryParameter<String>(Articles::sort.name) {
-                        description = "Sort articles by name"
-                        required = false
-                        example("default") {
-                            value = "article1"
-                        }
-                    }
-                }
-                response {}
-            }
-        ) { resources ->
-            call.respondText("Articles: ${resources.sort}")
-        }
+        resourceRoute()
     }
 }
+
