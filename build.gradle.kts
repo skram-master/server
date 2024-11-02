@@ -1,8 +1,8 @@
-val appVersion: String by project
-
 plugins {
     alias(kotlinLibs.plugins.kotlin.jvm) apply (false)
 }
+
+val appVersion: String by project
 
 allprojects {
     version = appVersion

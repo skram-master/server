@@ -3,6 +3,7 @@ import org.gradle.kotlin.dsl.ktor
 
 plugins {
     application
+    alias(kotlinLibs.plugins.kotlin.jvm)
     alias(kotlinLibs.plugins.kotlin.serialization)
     alias(ktorLibs.plugins.io.ktor)
 }
