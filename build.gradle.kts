@@ -42,6 +42,7 @@ dependencies {
     implementation(ktorLibs.ktor.server.config.yaml)
 
     implementation(thirdPartyLibs.ktor.swagger.ui)
+    implementation(thirdPartyLibs.logback.classic)
 }
 
 ktor {
