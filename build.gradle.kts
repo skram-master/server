@@ -5,6 +5,7 @@ val appVersion: String by project
 plugins {
     application
     alias(kotlinLibs.plugins.kotlin.jvm)
+    alias(kotlinLibs.plugins.kotlin.serialization)
     alias(ktorLibs.plugins.io.ktor)
     alias(thirdPartyLibs.plugins.jooq.codegen) apply (false)
 }
@@ -39,6 +40,8 @@ dependencies {
     implementation(ktorLibs.ktor.server.auth.jwt.jvm)
     implementation(ktorLibs.ktor.server.netty.jvm)
     implementation(ktorLibs.ktor.server.config.yaml)
+
+    implementation(thirdPartyLibs.ktor.swagger.ui)
 }
 
 ktor {
