@@ -34,7 +34,6 @@ dependencies {
     implementation(ktorLibs.ktor.server.cors.jvm)
     implementation(ktorLibs.ktor.server.csrf.jvm)
     implementation(ktorLibs.ktor.server.call.logging.jvm)
-    implementation(ktorLibs.ktor.server.swagger.jvm)
     implementation(ktorLibs.ktor.server.default.headers.jvm)
     implementation(ktorLibs.ktor.server.resources.jvm)
     implementation(ktorLibs.ktor.server.auth.jwt.jvm)

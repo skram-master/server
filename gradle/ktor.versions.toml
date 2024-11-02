@@ -14,7 +14,6 @@ ktor-server-websockets-jvm = { module = "io.ktor:ktor-server-websockets-jvm", ve
 ktor-server-cors-jvm = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
 ktor-server-csrf-jvm = { module = "io.ktor:ktor-server-csrf-jvm", version.ref = "ktor" }
 ktor-server-call-logging-jvm = { module = "io.ktor:ktor-server-call-logging-jvm", version.ref = "ktor" }
-ktor-server-swagger-jvm = { module = "io.ktor:ktor-server-swagger-jvm", version.ref = "ktor" }
 ktor-server-default-headers-jvm = { module = "io.ktor:ktor-server-default-headers-jvm", version.ref = "ktor" }
 ktor-server-resources-jvm = { module = "io.ktor:ktor-server-resources-jvm", version.ref = "ktor" }
 ktor-server-auth-jwt-jvm = { module = "io.ktor:ktor-server-auth-jwt-jvm", version.ref = "ktor" }
