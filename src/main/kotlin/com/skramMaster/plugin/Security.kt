@@ -1,4 +1,4 @@
-package com.skramMaster.plugins
+package com.skramMaster.plugin
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
