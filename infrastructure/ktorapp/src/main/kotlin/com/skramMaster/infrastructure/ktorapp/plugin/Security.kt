@@ -1,4 +1,4 @@
-package com.skramMaster.plugin
+package com.skramMaster.infrastructure.ktorapp.plugin
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm

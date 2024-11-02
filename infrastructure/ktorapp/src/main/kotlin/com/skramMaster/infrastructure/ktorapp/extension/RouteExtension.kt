@@ -1,4 +1,4 @@
-package com.skramMaster.extension
+package com.skramMaster.infrastructure.ktorapp.extension
 
 import io.github.smiley4.ktorswaggerui.dsl.routes.OpenApiRoute
 import io.github.smiley4.ktorswaggerui.dsl.routing.documentation

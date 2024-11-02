@@ -1,6 +1,6 @@
-package com.skramMaster.route.v1
+package com.skramMaster.infrastructure.ktorapp.route.v1
 
-import com.skramMaster.extension.get
+import com.skramMaster.infrastructure.ktorapp.extension.get
 import io.ktor.http.HttpStatusCode
 import io.ktor.resources.Resource
 import io.ktor.server.response.respond

@@ -1,6 +1,6 @@
-package com.skramMaster
+package com.skramMaster.infrastructure.ktorapp
 
-import com.skramMaster.route.v1.resourceRouteV1
+import com.skramMaster.infrastructure.ktorapp.route.v1.resourceRouteV1
 import io.ktor.server.application.*
 import io.ktor.server.resources.Resources
 import io.ktor.server.response.respondText

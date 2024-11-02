@@ -1,4 +1,4 @@
-package com.skramMaster.plugin
+package com.skramMaster.infrastructure.ktorapp.plugin
 
 import io.ktor.server.application.*
 

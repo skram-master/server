@@ -1,4 +1,4 @@
-package com.skramMaster.plugin
+package com.skramMaster.infrastructure.ktorapp.plugin
 
 import io.github.smiley4.ktorswaggerui.SwaggerUI
 import io.github.smiley4.ktorswaggerui.routing.openApiSpec
