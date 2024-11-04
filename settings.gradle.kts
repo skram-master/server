@@ -28,4 +28,4 @@ dependencyResolutionManagement {
 }
 
 include("infrastructure:ktorapp")
-include("infrastructure:database")
+include("infrastructure:datasource")
