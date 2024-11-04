@@ -32,11 +32,18 @@ dependencies {
     implementation(ktorLibs.ktor.server.call.logging.jvm)
     implementation(thirdPartyLibs.logback.classic)
 
-    implementation(thirdPartyLibs.ktor.swagger.ui)
 
     implementation(ktorLibs.ktor.server.resources.jvm)
     implementation(ktorLibs.ktor.server.content.negotiation.jvm)
     implementation(ktorLibs.ktor.serialization.kotlinx.json.jvm)
+
+    implementation(thirdPartyLibs.ktor.swagger.ui)
+
+    implementation(thirdPartyLibs.koin.ktor)
+    implementation(thirdPartyLibs.koin.logger.slf4j)
+
+    // other module dependencies
+    implementation(project(":infrastructure:datasource"))
 }
 
 ktor {

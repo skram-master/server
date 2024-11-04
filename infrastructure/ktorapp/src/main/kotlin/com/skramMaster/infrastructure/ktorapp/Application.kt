@@ -1,6 +1,6 @@
 package com.skramMaster.infrastructure.ktorapp
 
-import com.skramMaster.infrastructure.ktorapp.plugin.configureDatabases
+import com.skramMaster.infrastructure.ktorapp.plugin.configureKoin
 import com.skramMaster.infrastructure.ktorapp.plugin.configureMonitoring
 import com.skramMaster.infrastructure.ktorapp.plugin.configureSecurity
 import com.skramMaster.infrastructure.ktorapp.plugin.configureSerialization
@@ -12,12 +12,12 @@ fun main(args: Array<String>) = io.ktor.server.netty.EngineMain.main(args)
 
 @Suppress("unused")
 fun Application.module() {
-    configureSerialization()
     configureSecurity()
 //    configureHTTP()
-    configureDatabases()
     configureSockets()
+    configureSerialization()
     configureMonitoring()
+    configureKoin()
     configureSwaggerUI()
     configureRouting()
 }

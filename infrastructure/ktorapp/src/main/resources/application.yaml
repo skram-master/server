@@ -4,13 +4,13 @@ ktor:
       - com.skramMaster.infrastructure.ktorapp.ApplicationKt.module
   deployment:
     port: 8080
-    postgres:
-      - user: $POSTGRES_USER
-      - password: $POSTGRES_PASSWORD
-      - db: $POSTGRES_DB
     watch:
       - classes
       - resources
+postgres:
+  name: $POSTGRES_DB
+  user: $POSTGRES_USER
+  password: $POSTGRES_PASSWORD
 jwt:
   domain: "https://jwt-provider-domain/"
   audience: "jwt-audience"
