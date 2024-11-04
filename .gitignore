@@ -37,4 +37,4 @@ out/
 
 *.env
 
-/postgres
+/postgres/data
