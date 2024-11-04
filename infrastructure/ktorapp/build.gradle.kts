@@ -15,10 +15,6 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation(ktorLibs.ktor.server.core.jvm)
     implementation(ktorLibs.ktor.server.netty.jvm)
