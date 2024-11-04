@@ -9,12 +9,12 @@ import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.exposed.dao.*
 import org.jetbrains.exposed.dao.id.EntityID
 
-abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) : IntEntity(id) {
+internal abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) : IntEntity(id) {
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: TimestampIntIdTable) :
+internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: TimestampIntIdTable) :
     IntEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->
@@ -25,12 +25,12 @@ abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: TimestampInt
     }
 }
 
-abstract class TimestampLongEntity(id: EntityID<Long>, table: TimestampLongIdTable) : LongEntity(id) {
+internal abstract class TimestampLongEntity(id: EntityID<Long>, table: TimestampLongIdTable) : LongEntity(id) {
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table: TimestampLongIdTable) :
+internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table: TimestampLongIdTable) :
     LongEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->
@@ -41,12 +41,13 @@ abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table: Timestam
     }
 }
 
-abstract class TimestampUUIDEntity(id: EntityID<java.util.UUID>, table: TimestampIntUUIDTable) : UUIDEntity(id) {
+internal abstract class TimestampUUIDEntity(id: EntityID<java.util.UUID>, table: TimestampIntUUIDTable) :
+    UUIDEntity(id) {
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampIntUUIDTable) :
+internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampIntUUIDTable) :
     UUIDEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->

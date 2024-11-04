@@ -16,7 +16,7 @@ private interface ConvertToSnakeCase {
     }
 }
 
-abstract class TimestampIntIdTable(tableName: String) : IntIdTable(getTableName(tableName)) {
+internal abstract class TimestampIntIdTable(tableName: String) : IntIdTable(getTableName(tableName)) {
 
     val createdAt = datetime("created_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
     val updatedAt = datetime("updated_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
@@ -24,7 +24,7 @@ abstract class TimestampIntIdTable(tableName: String) : IntIdTable(getTableName(
     companion object : ConvertToSnakeCase
 }
 
-abstract class TimestampLongIdTable(tableName: String) : LongIdTable(getTableName(tableName)) {
+internal abstract class TimestampLongIdTable(tableName: String) : LongIdTable(getTableName(tableName)) {
 
     val createdAt = datetime("created_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
     val updatedAt = datetime("updated_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
@@ -32,7 +32,7 @@ abstract class TimestampLongIdTable(tableName: String) : LongIdTable(getTableNam
     companion object : ConvertToSnakeCase
 }
 
-abstract class TimestampIntUUIDTable(tableName: String) : UUIDTable(tableName) {
+internal abstract class TimestampIntUUIDTable(tableName: String) : UUIDTable(tableName) {
     val createdAt = datetime("created_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
     val updatedAt = datetime("updated_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
 
