@@ -37,4 +37,5 @@ out/
 
 *.env
 
-/postgres
+/postgres/data
+/pgadmin

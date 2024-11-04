@@ -8,6 +8,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
+    @Suppress("UnstableApiUsage")
     repositories {
         mavenCentral()
         gradlePluginPortal()
@@ -25,3 +26,6 @@ dependencyResolutionManagement {
         }
     }
 }
+
+include("infrastructure:ktorapp")
+include("infrastructure:datasource")
