@@ -1,6 +1,3 @@
-import org.gradle.kotlin.dsl.ktor
-
-
 plugins {
     application
     alias(kotlinLibs.plugins.kotlin.jvm)
@@ -44,6 +41,7 @@ dependencies {
 
     // other module dependencies
     implementation(project(":infrastructure:datasource"))
+    implementation(project(":domain"))
 }
 
 ktor {

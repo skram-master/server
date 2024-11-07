@@ -3,7 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation(thirdPartyLibs.postgres)
     implementation(thirdPartyLibs.exposed.core)
     implementation(thirdPartyLibs.exposed.crypt)
@@ -13,4 +12,6 @@ dependencies {
 
     testImplementation(thirdPartyLibs.kotest.runner.junit5.jvm)
     testImplementation(thirdPartyLibs.kotest.assertions.core)
+
+    implementation(project(":domain"))
 }

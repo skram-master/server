@@ -1,6 +1,7 @@
 package com.skramMaster.infrastructure.ktorapp.plugin
 
 import com.skramMaster.infrastructure.ktorapp.di.database.DatabaseModuleBuilder
+import com.skramMaster.infrastructure.ktorapp.di.repository.RepositoryModuleBuilder
 import io.ktor.server.application.*
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
@@ -12,8 +13,10 @@ fun Application.configureKoin() {
 
     install(Koin) {
         slf4jLogger()
+
         modules(
-            DatabaseModuleBuilder.module(name = name, user = user, password = password),
+            DatabaseModuleBuilder.build(name = name, user = user, password = password),
+            *RepositoryModuleBuilder.build(),
         )
     }
 }
