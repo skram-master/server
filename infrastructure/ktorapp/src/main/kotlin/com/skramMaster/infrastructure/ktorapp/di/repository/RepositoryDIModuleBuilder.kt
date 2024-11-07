@@ -5,7 +5,7 @@ import com.skramMaster.infrastructure.datasource.repository.ArticleRepositoryImp
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object RepositoryModuleBuilder {
+object RepositoryDIModuleBuilder {
     fun build(): Module = module {
         single<ArticleRepository> { ArticleRepositoryImpl() }
     }

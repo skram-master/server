@@ -1,11 +1,13 @@
 package com.skramMaster.infrastructure.ktorapp.di.database
 
+import com.skramMaster.domain.transaction.TransactionProvider
 import com.skramMaster.infrastructure.datasource.database.DatabaseFactory
 import com.skramMaster.infrastructure.datasource.database.DefaultDatabaseFactory
+import com.skramMaster.infrastructure.datasource.database.DefaultTransactionProvider
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object DatabaseModuleBuilder {
+object DatabaseDIModuleBuilder {
     fun build(
         name: String,
         user: String,
@@ -18,5 +20,6 @@ object DatabaseModuleBuilder {
                 password = password,
             )
         }
+        single<TransactionProvider> { DefaultTransactionProvider(get()) }
     }
 }

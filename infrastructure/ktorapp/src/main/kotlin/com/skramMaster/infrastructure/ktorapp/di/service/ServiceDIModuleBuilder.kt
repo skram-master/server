@@ -5,7 +5,7 @@ import com.skramMaster.domain.service.ArticleServiceImpl
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object ServiceModuleBuilder {
+object ServiceDIModuleBuilder {
     fun build(): Module = module {
         single<ArticleService> { ArticleServiceImpl(get()) }
     }
