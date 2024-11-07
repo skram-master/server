@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+    implementation(kotlinLibs.kotlin.coroutine)
     implementation(thirdPartyLibs.postgres)
     implementation(thirdPartyLibs.exposed.core)
     implementation(thirdPartyLibs.exposed.crypt)

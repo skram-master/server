@@ -27,7 +27,7 @@ dependencyResolutionManagement {
     }
 }
 
-include("domain")
 include("infrastructure:ktorapp")
 include("infrastructure:datasource")
+include("domain")
 include("adapter")

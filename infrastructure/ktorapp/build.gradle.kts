@@ -42,6 +42,7 @@ dependencies {
     // other module dependencies
     implementation(project(":infrastructure:datasource"))
     implementation(project(":domain"))
+    implementation(project(":adapter"))
 }
 
 ktor {
