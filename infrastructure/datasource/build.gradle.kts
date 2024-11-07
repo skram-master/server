@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(thirdPartyLibs.postgres)
     implementation(thirdPartyLibs.exposed.core)
     implementation(thirdPartyLibs.exposed.crypt)

@@ -5,8 +5,8 @@ import com.skramMaster.infrastructure.datasource.entity.article.Articles
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
-internal class Article(id: EntityID<Int>) : TimestampIdEntity(id, Articles) {
-    companion object : IntEntityClass<Article>(Articles)
+internal class ArticleDao(id: EntityID<Int>) : TimestampIdEntity(id, Articles) {
+    companion object : IntEntityClass<ArticleDao>(Articles)
 
     var title by Articles.title
     var content by Articles.content
