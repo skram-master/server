@@ -19,6 +19,7 @@ class ArticleRepositoryImpl : ArticleRepository {
 
 private fun ArticleDao.toArticle(): Article {
     return Article(
+        id = id.value,
         title = title,
         content = content
     )
