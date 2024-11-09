@@ -1,16 +1,16 @@
 package com.skraMaster.controller.article
 
-import com.skraMaster.dto.article.ArticleRequest
-import com.skraMaster.dto.article.ArticleResponse
+import com.skraMaster.dto.article.ArticleGetV1Request
+import com.skraMaster.dto.article.ArticleV1Response
 import com.skramMaster.domain.model.Article
 import com.skramMaster.domain.service.ArticleService
 
 class ArticleController(
     private val articleServiceImpl: ArticleService
 ) {
-    fun getArticles(): List<ArticleResponse> {
+    suspend fun getArticles(): List<ArticleV1Response> {
         return articleServiceImpl.getArticles().map {
-            ArticleResponse(
+            ArticleV1Response(
                 id = it.id,
                 title = it.title,
                 content = it.content
@@ -18,12 +18,17 @@ class ArticleController(
         }
     }
 
-    fun createArticle(articleRequest: ArticleRequest) {
-        articleServiceImpl.createArticle(
+    suspend fun createArticle(articleRequest: ArticleGetV1Request): ArticleV1Response {
+        val createdArticle = articleServiceImpl.createArticle(
             article = Article(
                 title = articleRequest.title,
                 content = articleRequest.content,
             ),
+        )
+        return ArticleV1Response(
+            id = createdArticle.id,
+            title = createdArticle.title,
+            content = createdArticle.content
         )
     }
 }

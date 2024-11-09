@@ -1,11 +1,15 @@
 package com.skraMaster.dto.article
 
-data class ArticleRequest(
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class ArticleGetV1Request(
     val title: String,
     val content: String,
 )
 
-data class ArticleResponse(
+@Serializable
+data class ArticleV1Response(
     val id: Int,
     val title: String,
     val content: String,

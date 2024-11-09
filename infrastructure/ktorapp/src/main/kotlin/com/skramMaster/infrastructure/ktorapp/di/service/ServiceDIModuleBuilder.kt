@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 object ServiceDIModuleBuilder {
     fun build(): Module = module {
-        single<ArticleService> { ArticleServiceImpl(get()) }
+        single<ArticleService> { ArticleServiceImpl(get(), get()) }
     }
 }
