@@ -1,6 +1,3 @@
-[submodule "adapter/src/main/kotlin/com/skramMaster/--force"]
-	path = adapter/src/main/kotlin/com/skramMaster/--force
-	url = git@github.com:skram-master/dto.git
 [submodule "adapter/src/main/kotlin/com/skramMaster/dto"]
 	path = adapter/src/main/kotlin/com/skramMaster/dto
 	url = git@github.com:skram-master/dto.git
