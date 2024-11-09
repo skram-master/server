@@ -1,8 +1,8 @@
 package com.skramMaster.infrastructure.ktorapp.route.v1
 
-import com.skraMaster.controller.article.ArticleController
-import com.skraMaster.dto.article.ArticleGetV1Request
-import com.skraMaster.dto.article.ArticleV1Response
+import com.skramMaster.controller.article.ArticleController
+import com.skramMaster.dto.article.ArticleGetV1Request
+import com.skramMaster.dto.article.ArticleV1Response
 import com.skramMaster.infrastructure.ktorapp.extension.get
 import com.skramMaster.infrastructure.ktorapp.extension.post
 import com.skramMaster.resource.article.ArticlesV1

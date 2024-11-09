@@ -1,6 +1,6 @@
 package com.skramMaster.infrastructure.ktorapp
 
-import com.skraMaster.controller.article.ArticleController
+import com.skramMaster.controller.article.ArticleController
 import com.skramMaster.infrastructure.ktorapp.route.v1.articleRouteV1
 import io.ktor.server.application.*
 import io.ktor.server.resources.Resources

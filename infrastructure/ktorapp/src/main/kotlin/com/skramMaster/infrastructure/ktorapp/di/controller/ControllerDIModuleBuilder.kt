@@ -1,6 +1,6 @@
 package com.skramMaster.infrastructure.ktorapp.di.controller
 
-import com.skraMaster.controller.article.ArticleController
+import com.skramMaster.controller.article.ArticleController
 import org.koin.dsl.module
 
 object ControllerDIModuleBuilder {

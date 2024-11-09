@@ -1,7 +1,7 @@
-package com.skraMaster.controller.article
+package com.skramMaster.controller.article
 
-import com.skraMaster.dto.article.ArticleGetV1Request
-import com.skraMaster.dto.article.ArticleV1Response
+import com.skramMaster.dto.article.ArticleGetV1Request
+import com.skramMaster.dto.article.ArticleV1Response
 import com.skramMaster.domain.model.Article
 import com.skramMaster.domain.service.ArticleService
 
