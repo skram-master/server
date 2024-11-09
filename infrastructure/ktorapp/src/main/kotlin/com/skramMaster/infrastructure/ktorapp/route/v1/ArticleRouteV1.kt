@@ -5,27 +5,13 @@ import com.skraMaster.dto.article.ArticleGetV1Request
 import com.skraMaster.dto.article.ArticleV1Response
 import com.skramMaster.infrastructure.ktorapp.extension.get
 import com.skramMaster.infrastructure.ktorapp.extension.post
+import com.skramMaster.resource.article.ArticlesV1
 import io.ktor.http.*
-import io.ktor.resources.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.serialization.Serializable
 
-@Serializable
-@Resource("/articles")
-class ArticlesV1 {
-
-    @Serializable
-    @Resource("/new")
-    class New(val parent: ArticlesV1 = ArticlesV1())
-
-    companion object {
-        val tags = listOf("Articles")
-    }
-}
-
-fun Route.resourceRouteV1(articleController: ArticleController) {
+fun Route.articleRouteV1(articleController: ArticleController) {
     getArticles(articleController = articleController)
     createArticles(articleController = articleController)
 }

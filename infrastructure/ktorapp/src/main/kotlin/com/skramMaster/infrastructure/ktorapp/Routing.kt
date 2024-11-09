@@ -1,7 +1,7 @@
 package com.skramMaster.infrastructure.ktorapp
 
 import com.skraMaster.controller.article.ArticleController
-import com.skramMaster.infrastructure.ktorapp.route.v1.resourceRouteV1
+import com.skramMaster.infrastructure.ktorapp.route.v1.articleRouteV1
 import io.ktor.server.application.*
 import io.ktor.server.resources.Resources
 import io.ktor.server.response.respondText
@@ -21,7 +21,7 @@ fun Application.configureRouting() {
             call.respondText("Hello, world!")
         }
         route("api/v1") {
-            resourceRouteV1(articleController=articleController)
+            articleRouteV1(articleController=articleController)
         }
     }
 }
