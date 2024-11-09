@@ -1,22 +1,14 @@
 [versions]
-jooq = "3.19.14"
 logback = "1.4.14"
 koin = "4.0.0"
 kotest = "5.7.2"
 swagger-ui = "4.0.0"
-
-[plugins]
-jooq-codegen = { id = "org.jooq.jooq-codegen-gradle", version.ref = "jooq" }
+exposed = "0.56.0"
+postgres = "42.7.4"
 
 [libraries]
 # Logback
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-
-# JOOQ
-jooq = { module = "org.jooq:jooq", version.ref = "jooq" }
-jooq-meta = { module = "org.jooq:jooq-meta", version.ref = "jooq" }
-jooq-codegen = { module = "org.jooq:jooq-codegen", version.ref = "jooq" }
-jooq-postgres-extensions = { module = "org.jooq:jooq-postgres-extensions", version.ref = "jooq" }
 
 # Koin
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
@@ -28,3 +20,13 @@ kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.
 
 # Ktor-Swaggger-UI
 ktor-swagger-ui = { module = "io.github.smiley4:ktor-swagger-ui", version.ref = "swagger-ui" }
+
+# Postgres
+postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+
+# Exposed
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-crypt = { module = "org.jetbrains.exposed:exposed-crypt", version.ref = "exposed" }
+exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed" }
