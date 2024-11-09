@@ -5,6 +5,7 @@ COPY bash/develop/start.sh /home/gradle/app/
 
 COPY ./infrastructure /home/gradle/app/infrastructure/
 COPY ./domain /home/gradle/app/domain/
+COPY ./adapter /home/gradle/app/adapter/
 
 WORKDIR /home/gradle/app
 

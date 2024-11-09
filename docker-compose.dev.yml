@@ -10,6 +10,7 @@ services:
     volumes:
       - ./infrastructure:/home/gradle/app/infrastructure
       - ./domain:/home/gradle/app/domain
+      - ./adapter:/home/gradle/app/adapter
     depends_on:
       db:
         condition: service_healthy
