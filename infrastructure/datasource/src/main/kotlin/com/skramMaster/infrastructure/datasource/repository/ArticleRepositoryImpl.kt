@@ -5,11 +5,11 @@ import com.skramMaster.domain.repository.ArticleRepository
 import com.skramMaster.infrastructure.datasource.dao.article.ArticleDao
 
 class ArticleRepositoryImpl : ArticleRepository {
-    override fun getArticles(): List<Article> {
+    override suspend fun getArticles(): List<Article> {
         return ArticleDao.all().map { it.toArticle() }
     }
 
-    override fun createArticle(article: Article): Article {
+    override suspend fun createArticle(article: Article): Article {
         return ArticleDao.new {
             title = article.title
             content = article.content

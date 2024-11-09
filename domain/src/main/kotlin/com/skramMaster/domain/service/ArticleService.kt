@@ -2,16 +2,23 @@ package com.skramMaster.domain.service
 
 import com.skramMaster.domain.model.Article
 import com.skramMaster.domain.repository.ArticleRepository
+import com.skramMaster.domain.transaction.TransactionProvider
 
 interface ArticleService {
-    fun getArticles(): List<Article>
-    fun createArticle(article: Article): Article
+    suspend fun getArticles(): List<Article>
+    suspend fun createArticle(article: Article): Article
 }
 
 class ArticleServiceImpl(
-    private val articleRepository: ArticleRepository
+    private val transactionProvider: TransactionProvider,
+    private val articleRepository: ArticleRepository,
 ) : ArticleService {
-    override fun getArticles(): List<Article> = articleRepository.getArticles()
+    override suspend fun getArticles(): List<Article> = transactionProvider.transaction {
+        articleRepository.getArticles()
+    }
 
-    override fun createArticle(article: Article): Article = articleRepository.createArticle(article)
+
+    override suspend fun createArticle(article: Article): Article = transactionProvider.transaction {
+        articleRepository.createArticle(article)
+    }
 }
