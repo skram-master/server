@@ -8,16 +8,17 @@ import io.ktor.server.auth.jwt.*
 import io.ktor.server.plugins.csrf.*
 
 fun Application.configureSecurity() {
-    // TODO: Add if condition to check if the environment is production
-    install(CSRF) {
-        // tests Origin is an expected value
-        allowOrigin("http://localhost:8080")
+    if (developmentMode.not()) {
+        install(CSRF) {
+            // tests Origin is an expected value
+            allowOrigin("http://localhost:8080")
 
-        // tests Origin matches Host header
-        originMatchesHost()
+            // tests Origin matches Host header
+            originMatchesHost()
 
-        // custom header checks
-        checkHeader("X-CSRF-Token")
+            // custom header checks
+            checkHeader("X-CSRF-Token")
+        }
     }
     // Please read the jwt property from the config file if you are using EngineMain
     val jwtAudience = "jwt-audience"
