@@ -14,6 +14,9 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 # Logback
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
+# detekt
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
 # Koin
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin" }

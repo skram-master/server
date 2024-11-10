@@ -18,8 +18,6 @@ style:
     active: true
   OptionalUnit:
     active: true
-  OptionalReturnKeyword:
-    active: true
   WildcardImport:
     active: true
   CollapsibleIfStatements:
