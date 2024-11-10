@@ -5,6 +5,10 @@ kotest = "5.7.2"
 swagger-ui = "4.0.0"
 exposed = "0.56.0"
 postgres = "42.7.4"
+detekt = "1.23.7"
+
+[plugins]
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 [libraries]
 # Logback
