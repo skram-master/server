@@ -5,26 +5,9 @@ plugins {
 
 val appVersion: String by project
 
-detekt {
-    parallel = true
-
-    config.from(files("detekt/detekt.yml"))
-    buildUponDefaultConfig = true
-
-    basePath = rootDir.absolutePath
-}
-
 allprojects {
     version = appVersion
     group = "com.skramMaster"
-
-    repositories {
-        mavenCentral()
-    }
-
-    tasks.withType<Test>().configureEach {
-        useJUnitPlatform()
-    }
 }
 
 val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
@@ -32,7 +15,36 @@ val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMe
 }
 
 subprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    beforeEvaluate {
+        apply(plugin = kotlinLibs.plugins.kotlin.jvm.get().pluginId)
+        apply(plugin = thirdPartyLibs.plugins.detekt.get().pluginId)
+    }
+
+    afterEvaluate {
+        detekt {
+            parallel = true
+
+            config.from(files(project.rootDir.path + "/detekt/detekt.yml"))
+            buildUponDefaultConfig = true
+
+            basePath = rootDir.absolutePath
+        }
+
+        dependencies {
+            detektPlugins(thirdPartyLibs.detekt.formatting)
+        }
+    }
+
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
+    }
+
     tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+        jvmTarget = "22"
         finalizedBy(reportMerge)
     }
 
