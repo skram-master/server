@@ -3,7 +3,6 @@ package com.skramMaster.infrastructure.datasource.entity
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.shouldBe
 
-
 class CustomTimestampTableTest : ShouldSpec({
     context("convertToSneakCase returns class name in snake case") {
         should("if the class name is Hoge, the function should return hoge") {

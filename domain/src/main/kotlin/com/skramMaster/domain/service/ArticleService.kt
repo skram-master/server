@@ -17,7 +17,6 @@ class ArticleServiceImpl(
         articleRepository.getArticles()
     }
 
-
     override suspend fun createArticle(article: Article): Article = transactionProvider.transaction {
         articleRepository.createArticle(article)
     }

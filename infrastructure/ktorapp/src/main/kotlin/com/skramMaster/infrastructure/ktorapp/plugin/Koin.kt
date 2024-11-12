@@ -4,7 +4,8 @@ import com.skramMaster.infrastructure.ktorapp.di.controller.ControllerDIModuleBu
 import com.skramMaster.infrastructure.ktorapp.di.database.DatabaseDIModuleBuilder
 import com.skramMaster.infrastructure.ktorapp.di.repository.RepositoryDIModuleBuilder
 import com.skramMaster.infrastructure.ktorapp.di.service.ServiceDIModuleBuilder
-import io.ktor.server.application.*
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 

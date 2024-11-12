@@ -6,10 +6,10 @@ import com.skramMaster.dto.article.ArticleV1Response
 import com.skramMaster.infrastructure.ktorapp.extension.get
 import com.skramMaster.infrastructure.ktorapp.extension.post
 import com.skramMaster.resource.article.ArticlesV1
-import io.ktor.http.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.request.receive
+import io.ktor.server.response.respond
+import io.ktor.server.routing.Route
 
 fun Route.articleRouteV1(articleController: ArticleController) {
     getArticles(articleController = articleController)
@@ -17,7 +17,6 @@ fun Route.articleRouteV1(articleController: ArticleController) {
 }
 
 private fun Route.getArticles(articleController: ArticleController) {
-
     get<ArticlesV1>(
         {
             tags = ArticlesV1.tags
@@ -37,7 +36,7 @@ private fun Route.getArticles(articleController: ArticleController) {
                     description = "Something unexpected happened"
                 }
             }
-        }
+        },
     ) {
         call.respond(articleController.getArticles())
     }
@@ -63,7 +62,7 @@ fun Route.createArticles(articleController: ArticleController) {
                     description = "Something unexpected happened"
                 }
             }
-        }
+        },
     ) {
         val request = call.receive<ArticleGetV1Request>()
         call.respond(articleController.createArticle(request))

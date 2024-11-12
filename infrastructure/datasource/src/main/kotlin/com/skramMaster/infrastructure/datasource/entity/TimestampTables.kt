@@ -38,7 +38,3 @@ internal abstract class TimestampIntUUIDTable(tableName: String) : UUIDTable(tab
 
     companion object : ConvertToSnakeCase
 }
-
-
-
-

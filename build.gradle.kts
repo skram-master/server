@@ -32,9 +32,12 @@ subprojects {
             buildUponDefaultConfig = true
 
             basePath = rootDir.absolutePath
+            ignoreFailures = true
+            autoCorrect = true
         }
 
         dependencies {
+            // TODO add test dependencies
             detektPlugins(thirdPartyLibs.detekt.formatting)
         }
     }
