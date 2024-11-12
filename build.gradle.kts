@@ -5,10 +5,10 @@ plugins {
 
 val appVersion: String by project
 
-val sarifReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
     output.set(
         rootProject.layout.buildDirectory.file(
-            "reports/detekt/merge.sarif",
+            "reports/detekt/merge.html",
         ),
     )
 }
@@ -25,7 +25,7 @@ allprojects {
             buildUponDefaultConfig = true
 
             basePath = rootDir.absolutePath
-            ignoreFailures = true
+            ignoreFailures = false
             autoCorrect = true
         }
 
@@ -58,10 +58,10 @@ subprojects {
 
     tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
         jvmTarget = "22"
-        finalizedBy(sarifReportMerge)
+        finalizedBy(reportMerge)
     }
 
-    sarifReportMerge {
-        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.sarifReportFile })
+    reportMerge {
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.htmlReportFile })
     }
 }
