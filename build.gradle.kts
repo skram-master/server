@@ -34,6 +34,7 @@ subprojects {
             basePath = rootDir.absolutePath
             ignoreFailures = true
             autoCorrect = true
+
         }
 
         dependencies {
