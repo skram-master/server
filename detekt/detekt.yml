@@ -4,8 +4,8 @@ output-reports:
     - 'MdOutputReport'
     - 'XmlOutputReport'
     - 'TxtOutputReport'
-    - 'SarifOutputReport'
     - 'MdOutputReport'
+    - 'HtmlOutputReport'
 
 style:
   ClassOrdering:

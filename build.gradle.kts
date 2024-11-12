@@ -5,13 +5,34 @@ plugins {
 
 val appVersion: String by project
 
+val sarifReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(
+        rootProject.layout.buildDirectory.file(
+            "reports/detekt/merge.sarif",
+        ),
+    )
+}
+
 allprojects {
     version = appVersion
     group = "com.skramMaster"
-}
 
-val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
-    output.set(rootProject.layout.buildDirectory.file("reports/detekt/merge.html reports/detekt/merge.html"))
+    afterEvaluate {
+        detekt {
+            parallel = true
+
+            config.from(files(project.rootDir.path + "/detekt/detekt.yml"))
+            buildUponDefaultConfig = true
+
+            basePath = rootDir.absolutePath
+            ignoreFailures = true
+            autoCorrect = true
+        }
+
+        dependencies {
+            detektPlugins(thirdPartyLibs.detekt.formatting)
+        }
+    }
 }
 
 subprojects {
@@ -25,20 +46,7 @@ subprojects {
     }
 
     afterEvaluate {
-        detekt {
-            parallel = true
-
-            config.from(files(project.rootDir.path + "/detekt/detekt.yml"))
-            buildUponDefaultConfig = true
-
-            basePath = rootDir.absolutePath
-            ignoreFailures = true
-            autoCorrect = true
-
-        }
-
         dependencies {
-            detektPlugins(thirdPartyLibs.detekt.formatting)
             testImplementation(thirdPartyLibs.kotest.runner.junit5.jvm)
             testImplementation(thirdPartyLibs.kotest.assertions.core)
         }
@@ -50,10 +58,10 @@ subprojects {
 
     tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
         jvmTarget = "22"
-        finalizedBy(reportMerge)
+        finalizedBy(sarifReportMerge)
     }
 
-    reportMerge {
-        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.htmlReportFile })
+    sarifReportMerge {
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.sarifReportFile })
     }
 }
