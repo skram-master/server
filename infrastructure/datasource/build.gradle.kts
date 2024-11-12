@@ -11,8 +11,5 @@ dependencies {
     implementation(thirdPartyLibs.exposed.jdbc)
     implementation(thirdPartyLibs.exposed.kotlin.datetime)
 
-    testImplementation(thirdPartyLibs.kotest.runner.junit5.jvm)
-    testImplementation(thirdPartyLibs.kotest.assertions.core)
-
     implementation(project(":domain"))
 }
