@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/workflows/common/setup_gradle.yaml
+      - uses: ./.github/workflows/common/setup_gradle
 
       - name: kotest
         run: ./gradlew test --continue
