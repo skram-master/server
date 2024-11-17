@@ -2,7 +2,7 @@ output-reports:
   active: true
   exclude:
     - 'MdOutputReport'
-    - 'XmlOutputReport'
+    - 'HtmlOutputReport'
     - 'TxtOutputReport'
     - 'MdOutputReport'
     - 'SarifOutputReport'
@@ -45,7 +45,7 @@ formatting:
   Indentation:
     active: true
     indentSize: 4
-  MaxLineLength;:
+  MaxLineLength:
     active: true
     maxLineLength: 80
     excludePackageStatements: true

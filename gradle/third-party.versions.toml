@@ -6,6 +6,7 @@ swagger-ui = "4.0.0"
 exposed = "0.56.0"
 postgres = "42.7.4"
 detekt = "1.23.7"
+mockk = "1.13.13"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
@@ -24,6 +25,9 @@ koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref =
 # Kotest
 kotest-runner-junit5-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+# Mockk
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 # Ktor-Swaggger-UI
 ktor-swagger-ui = { module = "io.github.smiley4:ktor-swagger-ui", version.ref = "swagger-ui" }

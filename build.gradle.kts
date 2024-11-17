@@ -8,7 +8,7 @@ val appVersion: String by project
 val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
     output.set(
         rootProject.layout.buildDirectory.file(
-            "reports/detekt/merge.html",
+            "reports/detekt/merge.xml",
         ),
     )
 }
@@ -49,6 +49,7 @@ subprojects {
         dependencies {
             testImplementation(thirdPartyLibs.kotest.runner.junit5.jvm)
             testImplementation(thirdPartyLibs.kotest.assertions.core)
+            testImplementation(thirdPartyLibs.mockk)
         }
     }
 
@@ -62,6 +63,6 @@ subprojects {
     }
 
     reportMerge {
-        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.htmlReportFile })
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.xmlReportFile })
     }
 }
