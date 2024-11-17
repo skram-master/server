@@ -18,14 +18,14 @@ def main():
             line = error.get('line')
             message = error.get('message')
             source = error.get('source')
-            each_result = f"### {source}: {message}</br>\tcolumn: {column} line: {line}"
+            each_result = f"### {source}: {message}\n\tcolumn: {column} line: {line}"
             file_errors.append(each_result)
         if file_errors:
-            result = f"## {file_name}</br>"
-            result += "</br>".join(file_errors)
+            result = f"## {file_name}\n"
+            result += "\n".join(file_errors)
             errors.append(result)
     if errors:
-        result_str = "</br></br>".join(errors)
+        result_str = "\n".join(errors)
         subprocess.run(
             [f"echo '{result_str}' >> $GITHUB_STEP_SUMMARY"], shell=True
         )
