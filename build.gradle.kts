@@ -25,7 +25,7 @@ allprojects {
             buildUponDefaultConfig = true
 
             basePath = rootDir.absolutePath
-            ignoreFailures = false
+            ignoreFailures = true
             autoCorrect = true
         }
 

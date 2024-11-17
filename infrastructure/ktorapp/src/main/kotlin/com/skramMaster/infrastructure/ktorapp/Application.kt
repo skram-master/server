@@ -24,4 +24,3 @@ fun Application.module() {
     configureRouting()
 
 }
-

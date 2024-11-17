@@ -46,17 +46,11 @@ jobs:
       - name: detekt
         run: ./gradlew detekt -Pdetekt.autoCorrect=true
 
-      - name: Set up Python
-        if: failure()
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
       - name: Parse detekt report error
         if: failure()
         run: python .github/workflows/parse_detekt.py
         env:
           GITHUB_URL: ${{ github.server_url }}
           REPOSITORY_URL: ${{ github.repository }}
-          BRANCH: ${{ github.ref_name }}
+          BRANCH: ${{ github.head_ref }}
           DETEKT_REPORT_PATH: build/reports/detekt/merge.xml
