@@ -11,7 +11,7 @@ import io.ktor.server.routing.method
 
 inline fun <reified T : Any> Route.get(
     noinline builder: OpenApiRoute.() -> Unit = { },
-    noinline body: suspend RoutingContext.(T) -> Unit
+    noinline body: suspend RoutingContext.(T) -> Unit,
 ): Route {
     return documentation(builder) {
         resource<T> {
@@ -22,10 +22,9 @@ inline fun <reified T : Any> Route.get(
     }
 }
 
-
 inline fun <reified T : Any> Route.post(
     noinline builder: OpenApiRoute.() -> Unit = { },
-    noinline body: suspend RoutingContext.(T) -> Unit
+    noinline body: suspend RoutingContext.(T) -> Unit,
 ): Route {
     return documentation(builder) {
         resource<T> {
@@ -38,7 +37,7 @@ inline fun <reified T : Any> Route.post(
 
 inline fun <reified T : Any> Route.put(
     noinline builder: OpenApiRoute.() -> Unit = { },
-    noinline body: suspend RoutingContext.(T) -> Unit
+    noinline body: suspend RoutingContext.(T) -> Unit,
 ): Route {
     return documentation(builder) {
         resource<T> {
@@ -51,7 +50,7 @@ inline fun <reified T : Any> Route.put(
 
 inline fun <reified T : Any> Route.delete(
     noinline builder: OpenApiRoute.() -> Unit = { },
-    noinline body: suspend RoutingContext.(T) -> Unit
+    noinline body: suspend RoutingContext.(T) -> Unit,
 ): Route {
     return documentation(builder) {
         resource<T> {
@@ -64,7 +63,7 @@ inline fun <reified T : Any> Route.delete(
 
 inline fun <reified T : Any> Route.patch(
     noinline builder: OpenApiRoute.() -> Unit = { },
-    noinline body: suspend RoutingContext.(T) -> Unit
+    noinline body: suspend RoutingContext.(T) -> Unit,
 ): Route {
     return documentation(builder) {
         resource<T> {
@@ -77,7 +76,7 @@ inline fun <reified T : Any> Route.patch(
 
 inline fun <reified T : Any> Route.options(
     noinline builder: OpenApiRoute.() -> Unit = { },
-    noinline body: suspend RoutingContext.(T) -> Unit
+    noinline body: suspend RoutingContext.(T) -> Unit,
 ): Route {
     return documentation(builder) {
         resource<T> {
@@ -90,7 +89,7 @@ inline fun <reified T : Any> Route.options(
 
 inline fun <reified T : Any> Route.head(
     noinline builder: OpenApiRoute.() -> Unit = { },
-    noinline body: suspend RoutingContext.(T) -> Unit
+    noinline body: suspend RoutingContext.(T) -> Unit,
 ): Route {
     return documentation(builder) {
         resource<T> {
@@ -100,4 +99,3 @@ inline fun <reified T : Any> Route.head(
         }
     }
 }
-

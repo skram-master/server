@@ -10,10 +10,9 @@ class DefaultDatabaseFactory(val name: String, val user: String, val password: S
             url = "jdbc:postgresql://db:5432/$name",
             driver = "org.postgresql.Driver",
             user = user,
-            password = password
+            password = password,
         )
     }
-
 
     override fun init() {
         transaction(database) {

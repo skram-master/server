@@ -3,6 +3,7 @@ COPY --chown=gradle:gradle build.gradle.* settings.gradle.* gradle.properties /h
 COPY ./gradle /home/gradle/app/gradle
 COPY bash/develop/start.sh /home/gradle/app/
 
+COPY ./detekt /home/gradle/app/detekt/
 COPY ./infrastructure /home/gradle/app/infrastructure/
 COPY ./domain /home/gradle/app/domain/
 COPY ./adapter /home/gradle/app/adapter/

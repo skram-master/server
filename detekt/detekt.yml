@@ -1,0 +1,69 @@
+output-reports:
+  active: true
+  exclude:
+    - 'MdOutputReport'
+    - 'HtmlOutputReport'
+    - 'TxtOutputReport'
+    - 'MdOutputReport'
+    - 'SarifOutputReport'
+
+style:
+  ClassOrdering:
+    active: true
+  MultilineLambdaItParameter:
+    active: true
+  UseEmptyCounterpart:
+    active: true
+  OptionalUnit:
+    active: true
+  WildcardImport:
+    active: true
+  CollapsibleIfStatements:
+    active: true
+  SafeCast:
+    active: true
+  UnusedImports:
+    active: true
+  MagicNumber:
+    excludes: [ '**/datasource/entity/**' ]
+
+naming:
+  ClassNaming:
+    active: true
+    classPattern: '[A-Z$][a-zA-Z0-9$]*'
+  FunctionNaming:
+    active: true
+    functionPattern: '[a-z][A-Za-z0-9]*'
+  VariableNaming:
+    active: true
+    variablePattern: '[a-z][A-Za-z0-9]*'
+  PackageNaming:
+    active: true
+    packagePattern: '[a-z]+(\.[a-z][a-zA-Z0-9]*)*'
+
+formatting:
+  Indentation:
+    active: true
+    indentSize: 4
+  MaxLineLength:
+    active: true
+    maxLineLength: 80
+    excludePackageStatements: true
+  FinalNewline:
+    active: true
+    maxLines: 1
+  NoTrailingSpaces:
+    active: true
+  NoMultipleSpaces:
+    active: true
+  NoConsecutiveBlankLines:
+    active: true
+  ImportOrdering:
+    active: true
+    importOrder: [ "java", "kotlin", "androidx", "com" ]
+  TrailingCommaOnCallSite:
+    active: true
+    useTrailingCommaOnCallSite: true
+  TrailingCommaOnDeclarationSite:
+    active: true
+    useTrailingCommaOnDeclarationSite: true

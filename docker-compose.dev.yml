@@ -8,6 +8,7 @@ services:
     environment:
       DATABASE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
     volumes:
+      - ./detekt:/home/gradle/app/detekt
       - ./infrastructure:/home/gradle/app/infrastructure
       - ./domain:/home/gradle/app/domain
       - ./adapter:/home/gradle/app/adapter
