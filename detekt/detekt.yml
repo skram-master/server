@@ -49,12 +49,9 @@ formatting:
     active: true
     maxLineLength: 80
     excludePackageStatements: true
-  EndOfLine:
-    active: true
-    useUnixLineEndings: true
   FinalNewline:
     active: true
-    requireNewlineAtEndOfFile: true
+    maxLines: 1
   NoTrailingSpaces:
     active: true
   NoMultipleSpaces:

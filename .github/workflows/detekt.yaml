@@ -46,12 +46,10 @@ jobs:
       - name: detekt
         run: ./gradlew detekt -Pdetekt.autoCorrect=true
 
-  parse-detekt-report:
-    runs-on: ubuntu-latest
-    needs: detekt
-    steps:
-      - name: Parse Detekt Errors
+      - name: Set up Python
         if: failure()
-        uses: ./.github/workflows/parse_detekt_errors.yml
+        uses: actions/setup-python@v5
         with:
+          python-version: '3.13'
           DETEKT_REPORT_PATH: build/reports/detekt/merge.xml
+        run: python parse_detekt.py
