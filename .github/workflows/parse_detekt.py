@@ -5,11 +5,14 @@ import xml.etree.ElementTree as ET
 report_path = os.environ.get(
     "DETEKT_REPORT_PATH", "build/reports/detekt/merge.xml"
 )
+branch = os.environ.get("GITHUB_REF", "main")
+repository_url = os.environ.get("REPOSITORY_URL", "github.com")
 
 
 def main():
     errors: list[str] = []
     root = ET.parse(report_path).getroot()
+    base_link = f"{repository_url}/tree/{branch}"
     for file in root.findall("file"):
         file_name = file.get('name')
         file_errors = []
@@ -18,14 +21,15 @@ def main():
             line = error.get('line')
             message = error.get('message')
             # source = error.get('source')
-            each_result = f"#### {message} L{line}\n"
+            each_result = f"- [{message} L{line}]({base_link}/{file_name}#L{line})\n"
             file_errors.append(each_result)
         if file_errors:
-            result = f"### {file_name}\n"
+            result = f"### [{file_name}]({base_link}/{file_name})\n"
             result += "\n".join(file_errors)
+            result += "*** \n"
             errors.append(result)
     if errors:
-        result_str = "\n".join(errors)
+        result_str = "*** \n" + "\n".join(errors)
         subprocess.run(
             [f"echo '{result_str}' >> $GITHUB_STEP_SUMMARY"], shell=True
         )
