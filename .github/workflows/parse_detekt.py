@@ -14,14 +14,14 @@ def main():
         file_name = file.get('name')
         file_errors = []
         for error in file.findall('error'):
-            column = error.get('column')
+            # column = error.get('column')
             line = error.get('line')
             message = error.get('message')
-            source = error.get('source')
-            each_result = f"### {source}: {message}\n\tcolumn: {column} line: {line}"
+            # source = error.get('source')
+            each_result = f"#### {message} L{line}\n"
             file_errors.append(each_result)
         if file_errors:
-            result = f"## {file_name}\n"
+            result = f"### {file_name}\n"
             result += "\n".join(file_errors)
             errors.append(result)
     if errors:
