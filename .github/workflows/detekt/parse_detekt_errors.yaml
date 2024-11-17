@@ -1,0 +1,13 @@
+name: Parse Detekt Errors
+on:
+  workflow_call:
+jobs:
+  parse-detekt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python parse_detekt.py
