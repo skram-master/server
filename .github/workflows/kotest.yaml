@@ -19,10 +19,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
-          fetch-depth: 0
       - uses: ./.github/workflows/common/setup_gradle
+
+      - name: SSH Setting
+        env:
+          TOKEN: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p /home/runner/.ssh/
+          echo -e "$TOKEN" > /home/runner/.ssh/id_rsa
+          chmod 600 /home/runner/.ssh/id_rsa
+
+      - name: Checkout submodules
+        shell: bash
+        run: |
+          git submodule sync --recursive
+          git submodule update --init --force --recursive
 
       - name: kotest
         run: ./gradlew test --continue
