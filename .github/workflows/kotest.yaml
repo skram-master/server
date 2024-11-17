@@ -25,22 +25,20 @@ jobs:
         env:
           DTO_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_DTO }}
         run: |
-          mkdir -p /home/runner/.ssh/
-          echo -e "DTO_TOKEN" > /home/runner/.ssh/id_rsa
-          sudo chmod 600 /home/runner//.ssh/id_rsa
-          export GIT_SSH_COMMAND="ssh -i /home/runner/.ssh/id_rsa"
-          git submodule sync --recursive adapter/src/main/kotlin/com/skramMaster/dto
+          mkdir -p $HOME/.ssh/
+          echo -e "DTO_TOKEN" > $HOME/.ssh/id_rsa
+          sudo chmod 600 $HOME/.ssh/id_rsa
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
           git submodule update --init --force --recursive adapter/src/main/kotlin/com/skramMaster/dto
 
       - name: clone Resource submodule
         env:
           RESOURCE_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_RESOURCE }}
         run: |
-          mkdir -p /home/runner/.ssh/
-          echo -e "RESOURCE_TOKEN" > /home/runner/.ssh/id_rsa
-          sudo chmod 600 /home/runner/.ssh/id_rsa
-          export GIT_SSH_COMMAND="ssh -i /home/runner/.ssh/id_rsa"
-          git submodule sync --recursive infrastructure/ktorapp/src/main/kotlin/com/skramMaster/resource
+          mkdir -p $HOME/.ssh/
+          echo -e "RESOURCE_TOKEN" > $HOME/.ssh/id_rsa
+          sudo chmod 600 $HOME/.ssh/id_rsa
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
           git submodule update --init --force --recursive infrastructure/ktorapp/src/main/kotlin/com/skramMaster/resource
 
       - name: kotest
