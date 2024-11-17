@@ -55,5 +55,5 @@ jobs:
       - name: Parse detekt report error
         if: failure()
         run: python parse_detekt.py
-        with:
+        env:
           DETEKT_REPORT_PATH: build/reports/detekt/merge.xml
