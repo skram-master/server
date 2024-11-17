@@ -56,6 +56,7 @@ jobs:
         if: failure()
         run: python .github/workflows/parse_detekt.py
         env:
-          DETEKT_REPORT_PATH: build/reports/detekt/merge.xml
+          GITHUB_URL: ${{ github.server_url }}
+          REPOSITORY_URL: ${{ github.repository }}
           BRANCH: ${{ github.ref_name }}
-          REPOSITORY_URL: ${{ github.event.repository.url }}
+          DETEKT_REPORT_PATH: build/reports/detekt/merge.xml

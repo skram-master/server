@@ -5,14 +5,15 @@ import xml.etree.ElementTree as ET
 report_path = os.environ.get(
     "DETEKT_REPORT_PATH", "build/reports/detekt/merge.xml"
 )
-branch = os.environ.get("GITHUB_REF", "main")
-repository_url = os.environ.get("REPOSITORY_URL", "github.com")
+github_url = os.environ.get("GITHUB_URL", "https://github.com")
+repository_url = os.environ.get("REPOSITORY_URL")
+branch = os.environ.get("BRANCH", "main")
 
 
 def main():
     errors: list[str] = []
     root = ET.parse(report_path).getroot()
-    base_link = f"{repository_url}/tree/{branch}"
+    base_link = f"{github_url}/{repository_url}/tree/{branch}"
     for file in root.findall("file"):
         file_name = file.get('name')
         file_errors = []
