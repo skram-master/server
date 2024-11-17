@@ -52,6 +52,6 @@ jobs:
     steps:
       - name: Parse Detekt Errors
         if: failure()
-        uses: ./.github/workflows/detekt/parse_detekt_errors.yml
+        uses: ./.github/workflows/parse_detekt_errors.yml
         with:
           DETEKT_REPORT_PATH: build/reports/detekt/merge.xml
