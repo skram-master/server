@@ -26,7 +26,7 @@ jobs:
           DTO_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_DTO }}
         run: |
           mkdir -p $HOME/.ssh/
-          echo -e "DTO_TOKEN" > $HOME/.ssh/id_rsa
+          echo -e "$DTO_TOKEN" > $HOME/.ssh/id_rsa
           sudo chmod 600 $HOME/.ssh/id_rsa
           export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
           git submodule update --init --force --recursive adapter/src/main/kotlin/com/skramMaster/dto
@@ -36,7 +36,7 @@ jobs:
           RESOURCE_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_RESOURCE }}
         run: |
           mkdir -p $HOME/.ssh/
-          echo -e "RESOURCE_TOKEN" > $HOME/.ssh/id_rsa
+          echo -e "$RESOURCE_TOKEN" > $HOME/.ssh/id_rsa
           sudo chmod 600 $HOME/.ssh/id_rsa
           export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
           git submodule update --init --force --recursive infrastructure/ktorapp/src/main/kotlin/com/skramMaster/resource
