@@ -23,11 +23,14 @@ jobs:
 
       - name: SSH Setting
         env:
-          TOKEN: ${{ secrets.SSH_PRIVATE_KEY }}
+          DTO_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_DTO }}
+          RESOURCE_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_RESOURCE }}
         run: |
           mkdir -p /home/runner/.ssh/
-          echo -e "$TOKEN" > /home/runner/.ssh/id_rsa
-          chmod 600 /home/runner/.ssh/id_rsa
+          echo -e "DTO_TOKEN" > /home/runner/.ssh/id_rsa_dto
+          chmod 600 /home/runner/.ssh/id_rsa_dto
+          echo -e "RESOURCE_TOKEN" > /home/runner/.ssh/id_rsa_resource
+          chmod 600 /home/runner/.ssh/id_rsa_resource
 
       - name: Checkout submodules
         shell: bash
