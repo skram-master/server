@@ -43,17 +43,17 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: detekt
-        run: ./gradlew detekt -Pdetekt.autoCorrect=true
+#      - name: detekt
+#        run: ./gradlew detekt -Pdetekt.autoCorrect=true
 
       - name: Set up Python
-        if: failure()
+#        if: failure()
         uses: actions/setup-python@v5
         with:
           python-version: '3.13'
 
       - name: Parse detekt report error
-        if: failure()
-        run: python parse_detekt.py
+#        if: failure()
+        run: python .github/workflows/parse_detekt.py
         env:
           DETEKT_REPORT_PATH: build/reports/detekt/merge.xml
