@@ -9,7 +9,6 @@ runs:
         path: ~/.sdkman
         key: sdkman-java-22-amzn
         restore-keys: sdkman-java-22-amzn
-      shell: bash
 
     - name: Install SDKMAN and Corretto 22
       if: steps.cache.outputs.cache-hit != 'true'
@@ -27,4 +26,3 @@ runs:
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
-      shell: bash
