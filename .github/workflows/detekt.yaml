@@ -44,7 +44,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: detekt
-        run: ./gradlew detekt -Pdetekt.autoCorrect=true　--continue
+        run: ./gradlew detekt -Pdetekt.autoCorrect=false --continue
 
       - name: Parse detekt report error
         if: failure()

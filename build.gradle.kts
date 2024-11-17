@@ -26,7 +26,6 @@ allprojects {
 
             basePath = rootDir.absolutePath
             ignoreFailures = false
-            autoCorrect = true
         }
 
         dependencies {
