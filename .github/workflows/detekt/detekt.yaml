@@ -4,7 +4,10 @@ on:
   # Comment out push for resource saving
   # push:
   pull_request:
-    branches: [ main, develop, feature/* ]
+    branches:
+      - main
+      - develop
+      - 'feature/*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
