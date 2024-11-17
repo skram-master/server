@@ -1,0 +1,25 @@
+name: kotest
+
+on:
+  # Comment out push for resource saving
+  # push:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - 'feature/*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kotest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/workflows/common/setup_gradle
+
+      - name: kotest
+        run: ./gradlew test --continue
