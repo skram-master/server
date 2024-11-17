@@ -22,7 +22,7 @@ def main():
             line = error.get('line')
             message = error.get('message')
             # source = error.get('source')
-            each_result = f"- [{message} L{line}]({base_link}/{file_name}#L{line})\n"
+            each_result = f"- [{message}: L{line}]({base_link}/{file_name}#L{line})\n"
             file_errors.append(each_result)
         if file_errors:
             result = f"### [{file_name}]({base_link}/{file_name})\n"
