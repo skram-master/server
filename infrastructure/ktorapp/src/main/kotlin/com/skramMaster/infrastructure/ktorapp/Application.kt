@@ -22,5 +22,6 @@ fun Application.module() {
     configureDatabase()
     configureSwaggerUI()
     configureRouting()
+
 }
 

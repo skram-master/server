@@ -4,6 +4,7 @@ import com.skramMaster.infrastructure.datasource.entity.article.ArticleSchemaUti
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 
+
 class DefaultDatabaseFactory(val name: String, val user: String, val password: String) : DatabaseFactory {
     override val database: Database by lazy {
         Database.connect(
@@ -15,8 +16,10 @@ class DefaultDatabaseFactory(val name: String, val user: String, val password: S
     }
 
     override fun init() {
+
         transaction(database) {
             ArticleSchemaUtils.create()
         }
     }
+
 }
