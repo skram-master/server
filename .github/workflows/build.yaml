@@ -1,0 +1,45 @@
+name: build
+
+on:
+  # Comment out push for resource saving
+  # push:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - 'feature/*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/workflows/common/setup_gradle
+
+      - name: clone Dto submodule
+        env:
+          DTO_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_DTO }}
+        run: |
+          mkdir -p $HOME/.ssh/
+          echo -e "$DTO_TOKEN" > $HOME/.ssh/id_rsa
+          sudo chmod 600 $HOME/.ssh/id_rsa
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
+          git submodule update --init --force --recursive adapter/src/main/kotlin/com/skramMaster/dto
+
+      - name: clone Resource submodule
+        env:
+          RESOURCE_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_RESOURCE }}
+        run: |
+          mkdir -p $HOME/.ssh/
+          echo -e "$RESOURCE_TOKEN" > $HOME/.ssh/id_rsa
+          sudo chmod 600 $HOME/.ssh/id_rsa
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
+          git submodule update --init --force --recursive infrastructure/ktorapp/src/main/kotlin/com/skramMaster/resource
+
+      - name: build
+        run: ./gradlew build --continue
