@@ -1,4 +1,4 @@
-rootProject.name = "com.skramMaster"
+rootProject.name = "com.skram_master"
 
 pluginManagement {
     repositories {
