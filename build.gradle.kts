@@ -15,7 +15,7 @@ val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMe
 
 allprojects {
     version = appVersion
-    group = "com.skramMaster"
+    group = "com.skram_master"
 
     afterEvaluate {
         detekt {
@@ -23,7 +23,6 @@ allprojects {
 
             config.from(files(project.rootDir.path + "/detekt/detekt.yml"))
             buildUponDefaultConfig = true
-
             basePath = rootDir.absolutePath
             ignoreFailures = false
         }

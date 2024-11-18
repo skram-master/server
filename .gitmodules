@@ -1,6 +1,6 @@
-[submodule "infrastructure/ktorapp/src/main/kotlin/com/skramMaster/resource"]
-	path = infrastructure/ktorapp/src/main/kotlin/com/skramMaster/resource
+[submodule "infrastructure/ktorapp/src/main/kotlin/com/skram_master/resource"]
+	path = infrastructure/ktorapp/src/main/kotlin/com/skram_master/resource
 	url = git@github.com:skram-master/resource.git
-[submodule "adapter/src/main/kotlin/com/skramMaster/dto"]
-	path = adapter/src/main/kotlin/com/skramMaster/dto
+[submodule "adapter/src/main/kotlin/com/skram_master/dto"]
+	path = adapter/src/main/kotlin/com/skram_master/dto
 	url = git@github.com:skram-master/dto.git
