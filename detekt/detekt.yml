@@ -49,7 +49,7 @@ formatting:
     indentSize: 4
   MaxLineLength:
     active: true
-    maxLineLength: 80
+    maxLineLength: 100
     excludePackageStatements: true
   FinalNewline:
     active: true
