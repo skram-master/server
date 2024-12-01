@@ -1,6 +1,7 @@
 package com.skram_master.infrastructure.ktorapp
 
 import com.skram_master.infrastructure.ktorapp.plugin.configureDatabase
+import com.skram_master.infrastructure.ktorapp.plugin.configureHTTP
 import com.skram_master.infrastructure.ktorapp.plugin.configureKoin
 import com.skram_master.infrastructure.ktorapp.plugin.configureMonitoring
 import com.skram_master.infrastructure.ktorapp.plugin.configureSecurity
@@ -15,7 +16,7 @@ fun main(args: Array<String>) = io.ktor.server.netty.EngineMain.main(args)
 fun Application.module() {
     configureKoin()
     configureSecurity()
-//    configureHTTP()
+    configureHTTP()
     configureSockets()
     configureSerialization()
     configureMonitoring()

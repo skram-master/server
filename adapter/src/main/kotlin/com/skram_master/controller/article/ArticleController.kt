@@ -2,7 +2,7 @@ package com.skram_master.controller.article
 
 import com.skram_master.domain.model.Article
 import com.skram_master.domain.service.ArticleService
-import com.skram_master.dto.article.ArticleGetV1Request
+import com.skram_master.dto.article.ArticlePostV1Request
 import com.skram_master.dto.article.ArticleV1Response
 
 class ArticleController(
@@ -18,7 +18,7 @@ class ArticleController(
         }
     }
 
-    suspend fun createArticle(articleRequest: ArticleGetV1Request): ArticleV1Response {
+    suspend fun createArticle(articleRequest: ArticlePostV1Request): ArticleV1Response {
         val createdArticle = articleServiceImpl.createArticle(
             article = Article(
                 title = articleRequest.title,

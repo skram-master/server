@@ -1,7 +1,7 @@
 package com.skram_master.infrastructure.ktorapp.route.v1
 
 import com.skram_master.controller.article.ArticleController
-import com.skram_master.dto.article.ArticleGetV1Request
+import com.skram_master.dto.article.ArticlePostV1Request
 import com.skram_master.dto.article.ArticleV1Response
 import com.skram_master.infrastructure.ktorapp.extension.get
 import com.skram_master.infrastructure.ktorapp.extension.post
@@ -47,7 +47,7 @@ fun Route.createArticles(articleController: ArticleController) {
         {
             tags = ArticlesV1.tags
             request {
-                body<ArticleGetV1Request>()
+                body<ArticlePostV1Request>()
             }
             response {
                 HttpStatusCode.OK to {
@@ -64,7 +64,7 @@ fun Route.createArticles(articleController: ArticleController) {
             }
         },
     ) {
-        val request = call.receive<ArticleGetV1Request>()
+        val request = call.receive<ArticlePostV1Request>()
         call.respond(articleController.createArticle(request))
     }
 }
