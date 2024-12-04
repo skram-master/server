@@ -22,7 +22,7 @@ jobs:
       - uses: ./.github/workflows/common/setup_gradle
 
       - name: detekt
-        run: ./gradlew detekt -Pdetekt.autoCorrect=false --continue
+        run: ./gradlew detekt -Pdetekt.autoCorrect=false --continue --parallel
 
       - name: Parse detekt report error
         if: failure()

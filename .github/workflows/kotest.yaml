@@ -42,4 +42,6 @@ jobs:
           git submodule update --init --force --recursive infrastructure/ktorapp/src/main/kotlin/com/skram_master/resource
 
       - name: kotest
-        run: ./gradlew test --continue
+        run: |
+          ./gradlew cleanTest --continue --parallel
+          ./gradlew test --continue --parallel
