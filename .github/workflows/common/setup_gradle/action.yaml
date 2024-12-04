@@ -4,14 +4,15 @@ runs:
   using: "composite"
   steps:
     - name: Cache SDKMAN
-      uses: actions/cache@v4
+      id: cache-sdkman-restore
+      uses: actions/cache/restore@v4
       with:
         path: ~/.sdkman
-        key: sdkman-java-22-amzn
-        restore-keys: sdkman-java-22-amzn
+        key: sdkman-java-22-amzn-${{ github.run_id }}
+        restore-keys: sdkman-java-22-amzn-
 
     - name: Install SDKMAN and Corretto 22
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.cache-sdkman-restore.outputs.cache-matched-key == ''
       run: |
         curl -s "https://get.sdkman.io" | bash
         source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -26,3 +27,10 @@ runs:
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
+
+    - name: Save SDKMAN Cache
+      if: always() && steps.cache-sdkman-restore.outputs.cache-matched-key == ''
+      uses: actions/cache/save@v4
+      with:
+        key: ${{ steps.cache-sdkman-restore.outputs.cache-primary-key }}
+        path: ~/.sdkman
