@@ -44,4 +44,4 @@ jobs:
       - name: kotest
         run: |
           ./gradlew cleanTest --continue --parallel
-          ./gradlew test --continue --parallel
+          ./gradlew test -x detekt --continue --parallel
