@@ -10,7 +10,6 @@ ktor-server-core-jvm = { module = "io.ktor:ktor-server-core-jvm", version.ref = 
 ktor-serialization-kotlinx-json-jvm = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
 ktor-server-auth-jvm = { module = "io.ktor:ktor-server-auth-jvm", version.ref = "ktor" }
 ktor-server-http-redirect-jvm = { module = "io.ktor:ktor-server-http-redirect-jvm", version.ref = "ktor" }
-ktor-server-websockets-jvm = { module = "io.ktor:ktor-server-websockets-jvm", version.ref = "ktor" }
 ktor-server-cors-jvm = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
 ktor-server-csrf-jvm = { module = "io.ktor:ktor-server-csrf-jvm", version.ref = "ktor" }
 ktor-server-call-logging-jvm = { module = "io.ktor:ktor-server-call-logging-jvm", version.ref = "ktor" }
@@ -19,3 +18,5 @@ ktor-server-resources-jvm = { module = "io.ktor:ktor-server-resources-jvm", vers
 ktor-server-auth-jwt-jvm = { module = "io.ktor:ktor-server-auth-jwt-jvm", version.ref = "ktor" }
 ktor-server-netty-jvm = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
 ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor" }
+ktor-server-request-validation = { module = "io.ktor:ktor-server-request-validation", version.ref = "ktor" }
+ktor-server-status-pages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor"}
