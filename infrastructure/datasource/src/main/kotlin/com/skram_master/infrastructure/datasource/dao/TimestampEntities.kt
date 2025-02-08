@@ -1,8 +1,8 @@
 package com.skram_master.infrastructure.datasource.dao
 
 import com.skram_master.infrastructure.datasource.entity.TimestampIntIdTable
-import com.skram_master.infrastructure.datasource.entity.TimestampIntUUIDTable
 import com.skram_master.infrastructure.datasource.entity.TimestampLongIdTable
+import com.skram_master.infrastructure.datasource.entity.TimestampUUIDIdTable
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -18,7 +18,8 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.toEntity
 
 @Suppress("Unused")
-internal abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) : IntEntity(id) {
+internal abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) :
+    IntEntity(id) {
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
@@ -35,7 +36,8 @@ internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: Tim
 }
 
 @Suppress("Unused")
-internal abstract class TimestampLongEntity(id: EntityID<Long>, table: TimestampLongIdTable) : LongEntity(id) {
+internal abstract class TimestampLongEntity(id: EntityID<Long>, table: TimestampLongIdTable) :
+    LongEntity(id) {
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
@@ -52,13 +54,16 @@ internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table:
 }
 
 @Suppress("Unused")
-internal abstract class TimestampUUIDEntity(id: EntityID<java.util.UUID>, table: TimestampIntUUIDTable) :
+internal abstract class TimestampUUIDEntity(
+    id: EntityID<java.util.UUID>,
+    table: TimestampUUIDIdTable,
+) :
     UUIDEntity(id) {
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampIntUUIDTable) :
+internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampUUIDIdTable) :
     UUIDEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->

@@ -32,7 +32,7 @@ internal abstract class TimestampLongIdTable(tableName: String) : LongIdTable(ge
     companion object : ConvertToSnakeCase
 }
 
-internal abstract class TimestampIntUUIDTable(tableName: String) : UUIDTable(tableName) {
+internal abstract class TimestampUUIDIdTable(tableName: String) : UUIDTable(tableName) {
     val createdAt = datetime("created_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
     val updatedAt = datetime("updated_at").clientDefault { Clock.System.now().toLocalDateTime(TimeZone.UTC) }
 
