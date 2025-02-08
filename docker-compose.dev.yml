@@ -1,12 +1,16 @@
 services:
   app:
+    container_name: ${CONTAINER_NAME_KTOR}
     build:
       context: .
       dockerfile: docker/ktor/dev.Dockerfile
     ports:
       - "8080:8080"
     environment:
-      DATABASE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      DB_NAME: ${POSTGRES_DB}
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_URL: ${DATABASE_URL}/${POSTGRES_DB}
     volumes:
       - ./detekt:/home/gradle/app/detekt
       - ./infrastructure:/home/gradle/app/infrastructure
@@ -15,11 +19,10 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    env_file:
-      - .dev.env
     networks:
       - skram-master-server-network
   db:
+    container_name: ${CONTAINER_NAME_POSTGRES}
     image: postgres:${POSTGRES_VERSION}
     restart: always
     shm_size: 128mb
@@ -39,6 +42,7 @@ services:
       - skram-master-server-network
 
   pgadmin:
+    container_name: ${CONTAINER_NAME_PGADMIN}
     image: dpage/pgadmin4:${PGADMIN_VERSION}
     restart: always
     ports:

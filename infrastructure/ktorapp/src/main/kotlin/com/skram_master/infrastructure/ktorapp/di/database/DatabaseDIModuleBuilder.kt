@@ -9,15 +9,15 @@ import org.koin.dsl.module
 
 object DatabaseDIModuleBuilder {
     fun build(
-        name: String,
         user: String,
         password: String,
+        url: String,
     ): Module = module {
         single<DatabaseFactory> {
             DefaultDatabaseFactory(
-                name = name,
                 user = user,
                 password = password,
+                url = url,
             )
         }
         single<TransactionProvider> { DefaultTransactionProvider(get()) }

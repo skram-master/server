@@ -22,7 +22,7 @@ fun Application.configureSecurity() {
             checkHeader("X-CSRF-Token")
         }
     }
-    // Please read the jwt property from the config file if you are using EngineMain
+    // TODO: Replace with real values
     val jwtAudience = "jwt-audience"
     val jwtDomain = "https://jwt-provider-domain/"
     val jwtRealm = "ktor sample app"

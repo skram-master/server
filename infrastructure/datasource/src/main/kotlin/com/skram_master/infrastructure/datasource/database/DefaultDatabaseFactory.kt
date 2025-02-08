@@ -4,10 +4,14 @@ import com.skram_master.infrastructure.datasource.entity.article.ArticleSchemaUt
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class DefaultDatabaseFactory(val name: String, val user: String, val password: String) : DatabaseFactory {
+class DefaultDatabaseFactory(
+    val user: String,
+    val password: String,
+    val url: String,
+) : DatabaseFactory {
     override val database: Database by lazy {
         Database.connect(
-            url = "jdbc:postgresql://db:5432/$name",
+            url = url,
             driver = "org.postgresql.Driver",
             user = user,
             password = password,

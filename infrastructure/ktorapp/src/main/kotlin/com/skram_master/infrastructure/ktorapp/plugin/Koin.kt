@@ -10,15 +10,15 @@ import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 
 fun Application.configureKoin() {
-    val name = environment.config.property("postgres.name").getString()
     val user = environment.config.property("postgres.user").getString()
     val password = environment.config.property("postgres.password").getString()
+    val url = environment.config.property("postgres.url").getString()
 
     install(Koin) {
         slf4jLogger()
 
         modules(
-            DatabaseDIModuleBuilder.build(name = name, user = user, password = password),
+            DatabaseDIModuleBuilder.build(user = user, password = password, url = url),
             RepositoryDIModuleBuilder.build(),
             ServiceDIModuleBuilder.build(),
             ControllerDIModuleBuilder.build(),

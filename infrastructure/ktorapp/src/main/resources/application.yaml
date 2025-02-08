@@ -8,9 +8,10 @@ ktor:
       - classes
       - resources
 postgres:
-  name: $POSTGRES_DB
-  user: $POSTGRES_USER
-  password: $POSTGRES_PASSWORD
+  name: $DB_NAME
+  user: $DB_USER
+  password: $DB_PASSWORD
+  url: $DATABASE_URL
 jwt:
   domain: "https://jwt-provider-domain/"
   audience: "jwt-audience"
