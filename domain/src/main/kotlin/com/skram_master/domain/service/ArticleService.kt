@@ -1,6 +1,6 @@
 package com.skram_master.domain.service
 
-import com.skram_master.domain.model.Article
+import com.skram_master.domain.model.article.Article
 import com.skram_master.domain.repository.ArticleRepository
 import com.skram_master.domain.transaction.TransactionProvider
 

@@ -1,4 +1,4 @@
-package com.skram_master.domain.model
+package com.skram_master.domain.model.article
 
 data class Article(
     val id: Int = 0,
