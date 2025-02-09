@@ -1,16 +1,16 @@
 package com.skram_master.infrastructure.datasource.database
 
 import MigrationUtils
-import com.skram_master.infrastructure.datasource.entity.article.Articles
 import com.skram_master.infrastructure.datasource.entity.room.RoomSettings
 import com.skram_master.infrastructure.datasource.entity.room.Rooms
-import com.skram_master.infrastructure.datasource.entity.room.VoteMethod
+import com.skram_master.infrastructure.datasource.entity.room.VoteMethods
 import com.skram_master.infrastructure.datasource.entity.user.Users
 import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.ExperimentalDatabaseMigrationApi
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.nio.file.Paths
 
 class DefaultDatabaseFactory(
     val user: String,
@@ -18,6 +18,8 @@ class DefaultDatabaseFactory(
     val url: String,
     val migrationsDirectory: String,
 ) : DatabaseFactory {
+    private val migrationsTargetDirectory =
+        Paths.get("").toAbsolutePath().toString().replace("ktorapp", migrationsDirectory)
     override val database: Database by lazy {
         Database.connect(
             url = url,
@@ -30,13 +32,15 @@ class DefaultDatabaseFactory(
     override val flyway: Flyway by lazy {
         Flyway.configure()
             .dataSource(url, user, password)
-            .locations("filesystem:$migrationsDirectory")
+            .driver("org.postgresql.Driver")
+            .locations("filesystem:$migrationsTargetDirectory")
+            .baselineOnMigrate(true) // Used when migrating an existing database for the first time
             .load()
     }
 
     override fun init() {
         transaction(database) {
-            SchemaUtils.create(Users, Rooms, RoomSettings, VoteMethod)
+            SchemaUtils.create(Users, Rooms, RoomSettings, VoteMethods)
         }
     }
 
@@ -44,11 +48,12 @@ class DefaultDatabaseFactory(
     override fun migrate() {
         transaction(database) {
             MigrationUtils.generateMigrationScript(
-                Articles,
-                scriptDirectory = migrationsDirectory,
-                scriptName = "Add article table",
+                VoteMethods,
+                scriptDirectory = migrationsTargetDirectory,
+                scriptName = "fix_type_index",
             )
         }
+
         transaction(database) {
             flyway.migrate()
         }
@@ -56,7 +61,7 @@ class DefaultDatabaseFactory(
 
     override fun seed() {
         transaction(database) {
-            VoteMethod.seed()
+            VoteMethods.seed()
         }
     }
 }
