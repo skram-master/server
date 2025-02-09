@@ -2,7 +2,7 @@ package com.skram_master.infrastructure.datasource.dao
 
 import com.skram_master.infrastructure.datasource.entity.TimestampIntIdTable
 import com.skram_master.infrastructure.datasource.entity.TimestampLongIdTable
-import com.skram_master.infrastructure.datasource.entity.TimestampUUIDIdTable
+import com.skram_master.infrastructure.datasource.entity.TimestampUUIDTable
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -56,14 +56,14 @@ internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table:
 @Suppress("Unused")
 internal abstract class TimestampUUIDEntity(
     id: EntityID<java.util.UUID>,
-    table: TimestampUUIDIdTable,
+    table: TimestampUUIDTable,
 ) :
     UUIDEntity(id) {
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampUUIDIdTable) :
+internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampUUIDTable) :
     UUIDEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->
