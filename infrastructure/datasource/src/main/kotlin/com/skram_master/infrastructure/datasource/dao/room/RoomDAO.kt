@@ -6,10 +6,10 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import java.util.*
 
-internal class RoomDao(id: EntityID<UUID>) : TimestampUUIDEntity(id, Rooms) {
+internal class RoomDAO(id: EntityID<UUID>) : TimestampUUIDEntity(id, Rooms) {
     var name by Rooms.name
     var roomOwner by Rooms.roomOwner
-    val roomSettings by RoomSettingsDao.referrersOn(Rooms.roomSettings)
+    val roomSettings by RoomSettingsDAO.referrersOn(Rooms.roomSettings)
 
-    companion object : UUIDEntityClass<RoomDao>(Rooms)
+    companion object : UUIDEntityClass<RoomDAO>(Rooms)
 }

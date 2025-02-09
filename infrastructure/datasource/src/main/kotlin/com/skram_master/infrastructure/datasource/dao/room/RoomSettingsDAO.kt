@@ -5,8 +5,8 @@ import com.skram_master.infrastructure.datasource.entity.room.RoomSettings
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
-internal class RoomSettingsDao(id: EntityID<Int>) : TimestampIdEntity(id, RoomSettings) {
-    val voteMethod by VoteMethodDao.referrersOn(RoomSettings.voteMethod)
+internal class RoomSettingsDAO(id: EntityID<Int>) : TimestampIdEntity(id, RoomSettings) {
+    val voteMethod by VoteMethodDAO.referrersOn(RoomSettings.voteMethod)
 
-    companion object : IntEntityClass<RoomSettingsDao>(RoomSettings)
+    companion object : IntEntityClass<RoomSettingsDAO>(RoomSettings)
 }
