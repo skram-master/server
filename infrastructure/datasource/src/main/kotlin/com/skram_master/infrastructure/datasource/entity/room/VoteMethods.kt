@@ -1,5 +1,6 @@
 package com.skram_master.infrastructure.datasource.entity.room
 
+import com.skram_master.enums.VoteMethodType
 import com.skram_master.infrastructure.datasource.entity.TimestampIntIdTable
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -7,14 +8,6 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.json.json
 import org.jetbrains.exposed.sql.selectAll
 import java.util.logging.Logger
-
-internal enum class VoteMethodType {
-    Fibonacci,
-    ModifiedFibonacci,
-    TShirtSize,
-    PowerOfTwo,
-    Custom,
-}
 
 @Serializable
 internal data class VoteMethodOption(
