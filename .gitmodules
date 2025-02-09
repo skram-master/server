@@ -4,3 +4,6 @@
 [submodule "adapter/src/main/kotlin/com/skram_master/dto"]
 	path = adapter/src/main/kotlin/com/skram_master/dto
 	url = git@github.com:skram-master/dto.git
+[submodule "domain/src/main/kotlin/com/skram_master/enums"]
+	path = domain/src/main/kotlin/com/skram_master/enums
+	url = git@github.com:skram-master/enums.git
