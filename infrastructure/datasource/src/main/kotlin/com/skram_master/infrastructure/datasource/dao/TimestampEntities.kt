@@ -17,13 +17,14 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.toEntity
 
-@Suppress("Unused")
 internal abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) :
     IntEntity(id) {
+    @Suppress("Unused")
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
+@Suppress("Unused")
 internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: TimestampIntIdTable) :
     IntEntityClass<E>(table) {
     init {
@@ -35,13 +36,14 @@ internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: Tim
     }
 }
 
-@Suppress("Unused")
 internal abstract class TimestampLongEntity(id: EntityID<Long>, table: TimestampLongIdTable) :
     LongEntity(id) {
+    @Suppress("Unused")
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
+@Suppress("Unused")
 internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table: TimestampLongIdTable) :
     LongEntityClass<E>(table) {
     init {
@@ -53,16 +55,17 @@ internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table:
     }
 }
 
-@Suppress("Unused")
 internal abstract class TimestampUUIDEntity(
     id: EntityID<java.util.UUID>,
     table: TimestampUUIDTable,
 ) :
     UUIDEntity(id) {
+    @Suppress("Unused")
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
+@Suppress("Unused")
 internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampUUIDTable) :
     UUIDEntityClass<E>(table) {
     init {
