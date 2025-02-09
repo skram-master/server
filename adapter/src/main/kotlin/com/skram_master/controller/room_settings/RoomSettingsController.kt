@@ -4,7 +4,6 @@ import com.skram_master.domain.model.room_settings.RoomSettingsInfo
 import com.skram_master.domain.service.room_settings.RoomSettingsService
 import com.skram_master.dto.room_settings.GetRoomSettingsInfoV1Response
 import com.skram_master.dto.vote_method.VoteMethodDTO
-import com.skram_master.dto.vote_method.VoteMethodOptionsDTO
 
 class RoomSettingsController(
     val roomSettingsService: RoomSettingsService,
@@ -20,9 +19,7 @@ private fun RoomSettingsInfo.toGetRoomSettingsInfoV1Response(): GetRoomSettingsI
         voteMethodList = defaultVoteMethodList.map { defaultVoteMethod ->
             VoteMethodDTO(
                 type = defaultVoteMethod.type,
-                options = defaultVoteMethod.options.map { option ->
-                    VoteMethodOptionsDTO(value = option.value)
-                },
+                options = defaultVoteMethod.options.map { it.value },
             )
         },
     )
