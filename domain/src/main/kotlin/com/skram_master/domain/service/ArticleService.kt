@@ -15,9 +15,10 @@ class ArticleServiceImpl(
 ) : ArticleService {
     override suspend fun getArticles(): List<Article> = transactionProvider.transaction {
         articleRepository.getArticles()
-    }
+    }.await()
 
-    override suspend fun createArticle(article: Article): Article = transactionProvider.transaction {
-        articleRepository.createArticle(article)
-    }
+    override suspend fun createArticle(article: Article): Article =
+        transactionProvider.transaction {
+            articleRepository.createArticle(article)
+        }.await()
 }
