@@ -19,5 +19,6 @@ dependencies {
 
     implementation(thirdPartyLibs.flyway.core)
 
+    implementation(project(":core"))
     implementation(project(":domain"))
 }
