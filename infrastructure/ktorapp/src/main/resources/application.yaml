@@ -12,6 +12,8 @@ postgres:
   user: $DB_USER
   password: $DB_PASSWORD
   url: $DATABASE_URL
+  migrations:
+    directory: $MIGRATIONS_DIRECTORY
 jwt:
   domain: "https://jwt-provider-domain/"
   audience: "jwt-audience"

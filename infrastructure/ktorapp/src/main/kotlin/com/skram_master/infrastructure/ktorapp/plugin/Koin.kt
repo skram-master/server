@@ -13,12 +13,19 @@ fun Application.configureKoin() {
     val user = environment.config.property("postgres.user").getString()
     val password = environment.config.property("postgres.password").getString()
     val url = environment.config.property("postgres.url").getString()
+    val migrationsDirectory =
+        environment.config.property("postgres.migrations.directory").getString()
 
     install(Koin) {
         slf4jLogger()
 
         modules(
-            DatabaseDIModuleBuilder.build(user = user, password = password, url = url),
+            DatabaseDIModuleBuilder.build(
+                user = user,
+                password = password,
+                url = url,
+                migrationsDirectory = migrationsDirectory,
+            ),
             RepositoryDIModuleBuilder.build(),
             ServiceDIModuleBuilder.build(),
             ControllerDIModuleBuilder.build(),

@@ -11,6 +11,7 @@ services:
       DB_USER: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       DATABASE_URL: ${DATABASE_URL}/${POSTGRES_DB}
+      MIGRATIONS_DIRECTORY: ${MIGRATIONS_DIRECTORY}
     volumes:
       - ./detekt:/home/gradle/app/detekt
       - ./infrastructure:/home/gradle/app/infrastructure

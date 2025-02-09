@@ -8,4 +8,7 @@ fun Application.configureDatabase() {
     val databaseFactory: DatabaseFactory by inject()
 
     databaseFactory.init()
+
+    // if you want to run the migrations uncomment the line below
+//    databaseFactory.migrate()
 }

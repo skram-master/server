@@ -12,12 +12,14 @@ object DatabaseDIModuleBuilder {
         user: String,
         password: String,
         url: String,
+        migrationsDirectory: String,
     ): Module = module {
         single<DatabaseFactory> {
             DefaultDatabaseFactory(
                 user = user,
                 password = password,
                 url = url,
+                migrationsDirectory = migrationsDirectory,
             )
         }
         single<TransactionProvider> { DefaultTransactionProvider(get()) }
