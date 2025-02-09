@@ -8,7 +8,7 @@ import com.skram_master.infrastructure.datasource.dao.room.VoteMethodDAO
 import com.skram_master.infrastructure.datasource.entity.room.VoteMethods
 
 class VoteMethodRepositoryImpl : VoteMethodRepository {
-    override suspend fun getVoteMethodList(): List<VoteMethod> {
+    override suspend fun getDefaultVoteMethodList(): List<VoteMethod> {
         val defaultVoteMethodList = VoteMethodDAO.find {
             VoteMethods.type neq VoteMethodType.Custom
         }.map { it.toVoteMethod() }
