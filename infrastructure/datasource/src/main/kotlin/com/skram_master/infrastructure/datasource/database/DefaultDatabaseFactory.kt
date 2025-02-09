@@ -53,4 +53,10 @@ class DefaultDatabaseFactory(
             flyway.migrate()
         }
     }
+
+    override fun seed() {
+        transaction(database) {
+            VoteMethod.seed()
+        }
+    }
 }

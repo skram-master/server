@@ -10,4 +10,6 @@ interface DatabaseFactory {
     fun init()
 
     fun migrate()
+
+    fun seed()
 }

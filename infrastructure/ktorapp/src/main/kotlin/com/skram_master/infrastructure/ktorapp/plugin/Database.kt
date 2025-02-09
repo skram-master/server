@@ -10,5 +10,7 @@ fun Application.configureDatabase() {
     databaseFactory.init()
 
     // if you want to run the migrations uncomment the line below
-//    databaseFactory.migrate()
+    // databaseFactory.migrate()
+
+    databaseFactory.seed()
 }
