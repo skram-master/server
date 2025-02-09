@@ -47,3 +47,4 @@ exposed-migration = { module = "org.jetbrains.exposed:exposed-migration", versio
 
 # Flyway
 flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }

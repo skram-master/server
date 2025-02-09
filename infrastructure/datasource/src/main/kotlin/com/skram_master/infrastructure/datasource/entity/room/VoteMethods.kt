@@ -22,12 +22,12 @@ internal data class VoteMethodOption(
     val order: Int,
 )
 
-internal object VoteMethod : TimestampIntIdTable("VoteMethod") {
-    val type = enumeration("type", VoteMethodType::class).uniqueIndex()
+internal object VoteMethods : TimestampIntIdTable("VoteMethods") {
+    val type = enumeration("type", VoteMethodType::class).index()
     val options = json<Array<VoteMethodOption>>("options", Json.Default)
 
     fun seed() {
-        if (VoteMethod.selectAll().count() > 0) {
+        if (VoteMethods.selectAll().count() > 0) {
             return
         }
         val logger = Logger.getGlobal()
@@ -37,7 +37,7 @@ internal object VoteMethod : TimestampIntIdTable("VoteMethod") {
         val fibonacciOptions = listOf(
             "0", "1", "2", "3", "5", "8", "13", "21", "34", "55", "89", "?", "☕️",
         )
-        VoteMethod.insert {
+        VoteMethods.insert {
             it[type] = VoteMethodType.Fibonacci
             it[options] = generateVoteMethodOptions(fibonacciOptions)
         }
@@ -46,7 +46,7 @@ internal object VoteMethod : TimestampIntIdTable("VoteMethod") {
         val modifiedFibonacciOptions = listOf(
             "0", "½", "1", "2", "3", "5", "8", "13", "20", "40", "100", "?", "☕️",
         )
-        VoteMethod.insert {
+        VoteMethods.insert {
             it[type] = VoteMethodType.ModifiedFibonacci
             it[options] = generateVoteMethodOptions(modifiedFibonacciOptions)
         }
@@ -61,7 +61,7 @@ internal object VoteMethod : TimestampIntIdTable("VoteMethod") {
             "?",
             "☕️",
         )
-        VoteMethod.insert {
+        VoteMethods.insert {
             it[type] = VoteMethodType.TShirtSize
             it[options] = generateVoteMethodOptions(tShirtSizeOptions)
         }
@@ -70,7 +70,7 @@ internal object VoteMethod : TimestampIntIdTable("VoteMethod") {
         val powerOfTwoOptions = listOf(
             "0", "1", "2", "4", "8", "16", "32", "64", "?", "☕️",
         )
-        VoteMethod.insert {
+        VoteMethods.insert {
             it[type] = VoteMethodType.PowerOfTwo
             it[options] = generateVoteMethodOptions(powerOfTwoOptions)
         }
