@@ -7,8 +7,6 @@ plugins {
 
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
-    // This arg passes the app when running the app from the gradle task
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
 dependencies {

@@ -1,9 +1,11 @@
 plugins {
     alias(kotlinLibs.plugins.kotlin.jvm)
+    alias(kotlinLibs.plugins.kotlin.serialization)
 }
 
 dependencies {
     implementation(kotlinLibs.kotlin.coroutine)
+    implementation(kotlinLibs.kotlin.serialization)
 
     implementation(thirdPartyLibs.postgres)
 
