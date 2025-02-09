@@ -8,7 +8,7 @@ class RoomSettingsService(
     val voteMethodRepository: VoteMethodRepository,
     val transactionProvider: TransactionProvider,
 ) {
-    suspend fun getRoomSettings(): RoomSettingsInfo = transactionProvider.transaction {
+    suspend fun getRoomSettingsInfo(): RoomSettingsInfo = transactionProvider.transaction {
         val defaultVoteMethodList = voteMethodRepository.getDefaultVoteMethodList()
         return@transaction RoomSettingsInfo(
             defaultVoteMethodList = defaultVoteMethodList,
