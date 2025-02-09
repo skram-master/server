@@ -15,6 +15,7 @@ services:
       DEVELOPMENT_MODE: $DEVELOPMENT_MODE
     volumes:
       - ./detekt:/home/gradle/app/detekt
+      - ./core:/home/gradle/app/core
       - ./infrastructure:/home/gradle/app/infrastructure
       - ./domain:/home/gradle/app/domain
       - ./adapter:/home/gradle/app/adapter
