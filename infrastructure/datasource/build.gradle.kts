@@ -18,6 +18,7 @@ dependencies {
     implementation(thirdPartyLibs.exposed.migration)
 
     implementation(thirdPartyLibs.flyway.core)
+    implementation(thirdPartyLibs.flyway.database.postgresql)
 
     implementation(project(":core"))
     implementation(project(":domain"))

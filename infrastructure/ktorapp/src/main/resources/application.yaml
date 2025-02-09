@@ -7,9 +7,8 @@ ktor:
     watch:
       - classes
       - resources
-    development: $DEVELOPMENT_MODE
+  development: $DEVELOPMENT_MODE
 postgres:
-  name: $DB_NAME
   user: $DB_USER
   password: $DB_PASSWORD
   url: $DATABASE_URL
