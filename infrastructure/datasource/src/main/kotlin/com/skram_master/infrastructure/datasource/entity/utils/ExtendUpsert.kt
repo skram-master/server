@@ -1,6 +1,5 @@
 package com.skram_master.infrastructure.datasource.entity.utils
 
-import com.skram_master.infrastructure.datasource.entity.TimestampTable
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime

@@ -11,18 +11,6 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 
-internal object TestIntTable : TimestampIntIdTable("TestIntTable") {
-    val name = varchar("name", 255)
-}
-
-internal object TestLongTable : TimestampLongIdTable("TestLongTable") {
-    val name = varchar("name", 255)
-}
-
-internal object TestUUIDTable : TimestampUUIDTable("TestUUIDTable") {
-    val name = varchar("name", 255)
-}
-
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class ExtendUpdateTest : ShouldSpec({
 
