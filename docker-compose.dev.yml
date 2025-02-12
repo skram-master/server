@@ -48,6 +48,8 @@ services:
     image: postgres:${POSTGRES_VERSION}
     restart: always
     shm_size: 32mb
+    ports:
+      - "3241:5432"
     environment:
       POSTGRES_DB: ${TEST_POSTGRES_DB}
       POSTGRES_USER: ${TEST_POSTGRES_USER}
