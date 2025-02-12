@@ -12,6 +12,9 @@ postgres:
   user: $DB_USER
   password: $DB_PASSWORD
   url: $DATABASE_URL
+  test_user: $?TEST_DB_USER
+  test_password: $?TEST_DB_PASSWORD
+  test_url: $?TEST_DATABASE_URL
   migrations:
     directory: $MIGRATIONS_DIRECTORY
 jwt:
