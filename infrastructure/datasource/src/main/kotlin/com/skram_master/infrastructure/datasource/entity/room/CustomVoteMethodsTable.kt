@@ -6,7 +6,7 @@ import com.skram_master.infrastructure.datasource.entity.TimestampIntIdTable
 import kotlinx.serialization.json.Json
 import org.jetbrains.exposed.sql.json.json
 
-internal object CustomVoteMethods : TimestampIntIdTable("CustomVoteMethods") {
+internal object CustomVoteMethodsTable : TimestampIntIdTable("CustomVoteMethods") {
     val type = enumeration("type", VoteMethodType::class).index()
     val options = json<Array<VoteMethodOption>>("options", Json.Default)
 }

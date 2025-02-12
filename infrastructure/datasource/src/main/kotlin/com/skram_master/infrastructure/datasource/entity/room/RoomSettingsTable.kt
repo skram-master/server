@@ -5,11 +5,11 @@ import com.skram_master.infrastructure.datasource.entity.TimestampIntIdTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
 // TODO: add detekt
-internal object RoomSettings : TimestampIntIdTable("RoomSettings") {
+internal object RoomSettingsTable : TimestampIntIdTable("RoomSettings") {
     val voteMethod = enumeration<VoteMethodType>("vote_method")
     val customVoteMethod = reference(
         name = "custom_vote_method",
-        foreign = CustomVoteMethods,
+        foreign = CustomVoteMethodsTable,
         onDelete = ReferenceOption.CASCADE,
     ).nullable().uniqueIndex()
 }

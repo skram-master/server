@@ -1,19 +1,19 @@
 package com.skram_master.infrastructure.datasource.entity.room
 
 import com.skram_master.infrastructure.datasource.entity.TimestampUUIDTable
-import com.skram_master.infrastructure.datasource.entity.user.Users
+import com.skram_master.infrastructure.datasource.entity.user.UsersTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
-internal object Rooms : TimestampUUIDTable("Rooms") {
+internal object RoomsTable : TimestampUUIDTable("Rooms") {
     val name = varchar("name", 255).nullable()
     val roomOwner = reference(
         name = "room_owner",
-        foreign = Users,
+        foreign = UsersTable,
         onDelete = ReferenceOption.SET_NULL,
     )
     val roomSettings = reference(
         name = "room_settings",
-        foreign = RoomSettings,
+        foreign = RoomSettingsTable,
         onDelete = ReferenceOption.CASCADE,
     ).uniqueIndex()
 }

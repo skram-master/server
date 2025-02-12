@@ -1,9 +1,9 @@
 package com.skram_master.infrastructure.datasource.database
 
-import com.skram_master.infrastructure.datasource.entity.room.CustomVoteMethods
-import com.skram_master.infrastructure.datasource.entity.room.RoomSettings
-import com.skram_master.infrastructure.datasource.entity.room.Rooms
-import com.skram_master.infrastructure.datasource.entity.user.Users
+import com.skram_master.infrastructure.datasource.entity.room.CustomVoteMethodsTable
+import com.skram_master.infrastructure.datasource.entity.room.RoomSettingsTable
+import com.skram_master.infrastructure.datasource.entity.room.RoomsTable
+import com.skram_master.infrastructure.datasource.entity.user.UsersTable
 import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.ExperimentalDatabaseMigrationApi
@@ -39,7 +39,7 @@ class DefaultDatabaseFactory(
 
     override fun init() {
         transaction(database) {
-            SchemaUtils.create(Users, Rooms, RoomSettings, CustomVoteMethods)
+            SchemaUtils.create(UsersTable, RoomsTable, RoomSettingsTable, CustomVoteMethodsTable)
         }
     }
 
