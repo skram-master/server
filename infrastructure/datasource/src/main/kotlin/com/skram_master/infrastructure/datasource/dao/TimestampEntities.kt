@@ -17,7 +17,7 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.toEntity
 
-internal abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) :
+internal abstract class TimestampIntIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) :
     IntEntity(id) {
     @Suppress("Unused")
     val createdAt by table.createdAt
@@ -25,7 +25,7 @@ internal abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampInt
 }
 
 @Suppress("Unused")
-internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: TimestampIntIdTable) :
+internal abstract class TimestampIntIdEntityClass<E : TimestampIntIdEntity>(table: TimestampIntIdTable) :
     IntEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->
@@ -36,7 +36,7 @@ internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: Tim
     }
 }
 
-internal abstract class TimestampLongEntity(id: EntityID<Long>, table: TimestampLongIdTable) :
+internal abstract class TimestampLongIdEntity(id: EntityID<Long>, table: TimestampLongIdTable) :
     LongEntity(id) {
     @Suppress("Unused")
     val createdAt by table.createdAt
@@ -44,7 +44,7 @@ internal abstract class TimestampLongEntity(id: EntityID<Long>, table: Timestamp
 }
 
 @Suppress("Unused")
-internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table: TimestampLongIdTable) :
+internal abstract class TimestampLongIdEntityClass<E : TimestampLongIdEntity>(table: TimestampLongIdTable) :
     LongEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->
