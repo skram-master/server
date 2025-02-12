@@ -6,11 +6,16 @@ import org.jetbrains.annotations.VisibleForTesting
 import kotlin.coroutines.CoroutineContext
 
 sealed class CoroutineProvider(
-    private val defaultDispatcher: CoroutineDispatcher,
+    defaultDispatcher: CoroutineDispatcher,
 ) {
     @set:VisibleForTesting
-    var dispatcherHandler: ((CoroutineContext) -> CoroutineContext) = { defaultDispatcher }
-    val dispatcher = dispatcherHandler.invoke(defaultDispatcher)
+    var dispatcherHandler: ((CoroutineContext) -> CoroutineContext)? = null
+    val dispatcher = dispatcherHandler?.invoke(defaultDispatcher) ?: defaultDispatcher
+
+    @VisibleForTesting
+    fun reset() {
+        dispatcherHandler = null
+    }
 
     object Default : CoroutineProvider(Dispatchers.Default)
     object IO : CoroutineProvider(Dispatchers.IO)
