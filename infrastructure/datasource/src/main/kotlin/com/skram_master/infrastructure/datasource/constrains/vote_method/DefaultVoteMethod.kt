@@ -75,5 +75,14 @@ sealed interface DefaultVoteMethod {
                 else -> throw IllegalArgumentException("Unsupported vote method type: $type")
             }
         }
+
+        fun all(): List<DefaultVoteMethod> {
+            return listOf(
+                Fibonacci(),
+                ModifiedFibonacci(),
+                TShirtSize(),
+                PowerOfTwo(),
+            )
+        }
     }
 }
