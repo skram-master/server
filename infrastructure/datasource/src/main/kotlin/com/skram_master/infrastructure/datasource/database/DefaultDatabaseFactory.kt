@@ -47,7 +47,7 @@ class DefaultDatabaseFactory(
     override fun migrate() {
         transaction(database) {
 //            MigrationUtils.generateMigrationScript(
-//                CustomVoteMethods,
+//                *tables,
 //                scriptDirectory = migrationsTargetDirectory,
 //                scriptName = "fix_type_index",
 //            )

@@ -1,8 +1,8 @@
 package com.skram_master.infrastructure.datasource.dao
 
-import com.skram_master.infrastructure.datasource.entity.TimestampIntIdTable
-import com.skram_master.infrastructure.datasource.entity.TimestampLongIdTable
-import com.skram_master.infrastructure.datasource.entity.TimestampUUIDTable
+import com.skram_master.infrastructure.datasource.entity.utils.TimestampIntIdTable
+import com.skram_master.infrastructure.datasource.entity.utils.TimestampLongIdTable
+import com.skram_master.infrastructure.datasource.entity.utils.TimestampUUIDTable
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime

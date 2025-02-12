@@ -1,7 +1,7 @@
 package com.skram_master.infrastructure.datasource.entity.room
 
-import com.skram_master.infrastructure.datasource.entity.TimestampUUIDTable
 import com.skram_master.infrastructure.datasource.entity.user.UsersTable
+import com.skram_master.infrastructure.datasource.entity.utils.TimestampUUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
 internal object RoomsTable : TimestampUUIDTable("Rooms") {

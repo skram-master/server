@@ -3,7 +3,7 @@ package com.skram_master.infrastructure.datasource.constrains.vote_method
 import com.skram_master.enums.VoteMethodType
 import com.skram_master.infrastructure.datasource.common.vote_method.VoteMethodOption
 
-private val fibonacciOptions =
+private val FibonacciOptions =
     listOf("0", "1", "2", "3", "5", "8", "13", "21", "34", "55", "89", "?", "☕️")
         .mapIndexed { index, value ->
             VoteMethodOption(
@@ -12,7 +12,7 @@ private val fibonacciOptions =
             )
         }
 
-private val modifiedFibonacciOptions =
+private val ModifiedFibonacciOptions =
     listOf("0", "½", "1", "2", "3", "5", "8", "13", "20", "40", "100", "?", "☕️")
         .mapIndexed { index, value ->
             VoteMethodOption(
@@ -21,7 +21,7 @@ private val modifiedFibonacciOptions =
             )
         }
 
-private val tShirtSizeOptions = listOf("XS", "S", "M", "L", "XL", "?", "☕️")
+private val TShirtSizeOptions = listOf("XS", "S", "M", "L", "XL", "?", "☕️")
     .mapIndexed { index, value ->
         VoteMethodOption(
             value = value,
@@ -29,7 +29,7 @@ private val tShirtSizeOptions = listOf("XS", "S", "M", "L", "XL", "?", "☕️")
         )
     }
 
-private val powerOfTwoOptions = listOf("0", "1", "2", "4", "8", "16", "32", "64", "?", "☕️")
+private val PowerOfTwoOptions = listOf("0", "1", "2", "4", "8", "16", "32", "64", "?", "☕️")
     .mapIndexed { index, value ->
         VoteMethodOption(
             value = value,
@@ -42,25 +42,25 @@ sealed interface DefaultVoteMethod {
     val options: List<VoteMethodOption>
 
     data class Fibonacci(
-        override val options: List<VoteMethodOption> = fibonacciOptions,
+        override val options: List<VoteMethodOption> = FibonacciOptions,
     ) : DefaultVoteMethod {
         override val type = VoteMethodType.Fibonacci
     }
 
     data class ModifiedFibonacci(
-        override val options: List<VoteMethodOption> = modifiedFibonacciOptions,
+        override val options: List<VoteMethodOption> = ModifiedFibonacciOptions,
     ) : DefaultVoteMethod {
         override val type = VoteMethodType.ModifiedFibonacci
     }
 
     data class TShirtSize(
-        override val options: List<VoteMethodOption> = tShirtSizeOptions,
+        override val options: List<VoteMethodOption> = TShirtSizeOptions,
     ) : DefaultVoteMethod {
         override val type = VoteMethodType.TShirtSize
     }
 
     data class PowerOfTwo(
-        override val options: List<VoteMethodOption> = powerOfTwoOptions,
+        override val options: List<VoteMethodOption> = PowerOfTwoOptions,
     ) : DefaultVoteMethod {
         override val type = VoteMethodType.PowerOfTwo
     }

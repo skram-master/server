@@ -1,4 +1,4 @@
-package com.skram_master.infrastructure.datasource.entity
+package com.skram_master.infrastructure.datasource.entity.utils
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime
