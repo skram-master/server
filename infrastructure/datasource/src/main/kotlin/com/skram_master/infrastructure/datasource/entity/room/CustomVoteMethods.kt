@@ -10,17 +10,17 @@ import org.jetbrains.exposed.sql.selectAll
 import java.util.logging.Logger
 
 @Serializable
-internal data class VoteMethodOption(
+internal data class CustomVoteMethodOption(
     val value: String,
     val order: Int,
 )
 
-internal object VoteMethods : TimestampIntIdTable("VoteMethods") {
+internal object CustomVoteMethods : TimestampIntIdTable("CustomVoteMethods") {
     val type = enumeration("type", VoteMethodType::class).index()
-    val options = json<Array<VoteMethodOption>>("options", Json.Default)
+    val options = json<Array<CustomVoteMethodOption>>("options", Json.Default)
 
     fun seed() {
-        if (VoteMethods.selectAll().count() > 0) {
+        if (CustomVoteMethods.selectAll().count() > 0) {
             return
         }
         val logger = Logger.getGlobal()
@@ -30,7 +30,7 @@ internal object VoteMethods : TimestampIntIdTable("VoteMethods") {
         val fibonacciOptions = listOf(
             "0", "1", "2", "3", "5", "8", "13", "21", "34", "55", "89", "?", "☕️",
         )
-        VoteMethods.insert {
+        CustomVoteMethods.insert {
             it[type] = VoteMethodType.Fibonacci
             it[options] = generateVoteMethodOptions(fibonacciOptions)
         }
@@ -39,7 +39,7 @@ internal object VoteMethods : TimestampIntIdTable("VoteMethods") {
         val modifiedFibonacciOptions = listOf(
             "0", "½", "1", "2", "3", "5", "8", "13", "20", "40", "100", "?", "☕️",
         )
-        VoteMethods.insert {
+        CustomVoteMethods.insert {
             it[type] = VoteMethodType.ModifiedFibonacci
             it[options] = generateVoteMethodOptions(modifiedFibonacciOptions)
         }
@@ -54,7 +54,7 @@ internal object VoteMethods : TimestampIntIdTable("VoteMethods") {
             "?",
             "☕️",
         )
-        VoteMethods.insert {
+        CustomVoteMethods.insert {
             it[type] = VoteMethodType.TShirtSize
             it[options] = generateVoteMethodOptions(tShirtSizeOptions)
         }
@@ -63,7 +63,7 @@ internal object VoteMethods : TimestampIntIdTable("VoteMethods") {
         val powerOfTwoOptions = listOf(
             "0", "1", "2", "4", "8", "16", "32", "64", "?", "☕️",
         )
-        VoteMethods.insert {
+        CustomVoteMethods.insert {
             it[type] = VoteMethodType.PowerOfTwo
             it[options] = generateVoteMethodOptions(powerOfTwoOptions)
         }
@@ -71,9 +71,9 @@ internal object VoteMethods : TimestampIntIdTable("VoteMethods") {
         logger.info("VoteMethod seed data inserted.")
     }
 
-    private fun generateVoteMethodOptions(options: List<String>): Array<VoteMethodOption> {
+    private fun generateVoteMethodOptions(options: List<String>): Array<CustomVoteMethodOption> {
         return options.mapIndexed { index, value ->
-            VoteMethodOption(value = value, order = index)
+            CustomVoteMethodOption(value = value, order = index)
         }.toTypedArray()
     }
 }

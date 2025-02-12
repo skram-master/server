@@ -1,9 +1,8 @@
 package com.skram_master.infrastructure.datasource.database
 
-import MigrationUtils
+import com.skram_master.infrastructure.datasource.entity.room.CustomVoteMethods
 import com.skram_master.infrastructure.datasource.entity.room.RoomSettings
 import com.skram_master.infrastructure.datasource.entity.room.Rooms
-import com.skram_master.infrastructure.datasource.entity.room.VoteMethods
 import com.skram_master.infrastructure.datasource.entity.user.Users
 import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
@@ -40,18 +39,18 @@ class DefaultDatabaseFactory(
 
     override fun init() {
         transaction(database) {
-            SchemaUtils.create(Users, Rooms, RoomSettings, VoteMethods)
+            SchemaUtils.create(Users, Rooms, RoomSettings, CustomVoteMethods)
         }
     }
 
     @OptIn(ExperimentalDatabaseMigrationApi::class)
     override fun migrate() {
         transaction(database) {
-            MigrationUtils.generateMigrationScript(
-                VoteMethods,
-                scriptDirectory = migrationsTargetDirectory,
-                scriptName = "fix_type_index",
-            )
+//            MigrationUtils.generateMigrationScript(
+//                CustomVoteMethods,
+//                scriptDirectory = migrationsTargetDirectory,
+//                scriptName = "fix_type_index",
+//            )
         }
 
         transaction(database) {
@@ -61,7 +60,7 @@ class DefaultDatabaseFactory(
 
     override fun seed() {
         transaction(database) {
-            VoteMethods.seed()
+            CustomVoteMethods.seed()
         }
     }
 }

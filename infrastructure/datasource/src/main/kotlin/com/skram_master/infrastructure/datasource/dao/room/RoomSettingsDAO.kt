@@ -6,7 +6,7 @@ import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 internal class RoomSettingsDAO(id: EntityID<Int>) : TimestampIdEntity(id, RoomSettings) {
-    val voteMethod by VoteMethodDAO.referrersOn(RoomSettings.voteMethod)
+    val voteMethod by CustomVoteMethodDAO.referrersOn(RoomSettings.voteMethod)
 
     companion object : IntEntityClass<RoomSettingsDAO>(RoomSettings)
 }
