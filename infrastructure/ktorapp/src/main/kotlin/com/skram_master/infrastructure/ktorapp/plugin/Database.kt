@@ -12,5 +12,6 @@ fun Application.configureDatabase() {
     // if you want to run the migrations uncomment the line below
 //    databaseFactory.migrate()
 
-    databaseFactory.seed()
+    // if you want to seed the database uncomment the line below
+//    databaseFactory.seed()
 }

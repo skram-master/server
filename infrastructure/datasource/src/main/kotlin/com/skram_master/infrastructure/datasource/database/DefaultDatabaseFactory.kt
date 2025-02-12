@@ -60,7 +60,6 @@ class DefaultDatabaseFactory(
 
     override fun seed() {
         transaction(database) {
-            CustomVoteMethods.seed()
         }
     }
 }
