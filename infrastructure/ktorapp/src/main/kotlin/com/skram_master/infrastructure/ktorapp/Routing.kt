@@ -1,7 +1,9 @@
 package com.skram_master.infrastructure.ktorapp
 
 import com.skram_master.controller.article.ArticleController
+import com.skram_master.controller.room_settings.RoomSettingsController
 import com.skram_master.infrastructure.ktorapp.route.v1.articleRouteV1
+import com.skram_master.infrastructure.ktorapp.route.v1.room_settings.roomSettingsRouteV1
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.resources.Resources
@@ -14,12 +16,13 @@ fun Application.configureRouting() {
     install(Resources)
 
     val articleController: ArticleController by inject()
-
+    val roomSettingsController: RoomSettingsController by inject()
     routing {
         get("/") {
             call.respondText("Hello, world!")
         }
         // api/v1
         articleRouteV1(articleController = articleController)
+        roomSettingsRouteV1(roomSettingsController = roomSettingsController)
     }
 }

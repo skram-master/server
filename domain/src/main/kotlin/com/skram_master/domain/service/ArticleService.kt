@@ -1,6 +1,6 @@
 package com.skram_master.domain.service
 
-import com.skram_master.domain.model.Article
+import com.skram_master.domain.model.article.Article
 import com.skram_master.domain.repository.ArticleRepository
 import com.skram_master.domain.transaction.TransactionProvider
 
@@ -15,9 +15,10 @@ class ArticleServiceImpl(
 ) : ArticleService {
     override suspend fun getArticles(): List<Article> = transactionProvider.transaction {
         articleRepository.getArticles()
-    }
+    }.await()
 
-    override suspend fun createArticle(article: Article): Article = transactionProvider.transaction {
-        articleRepository.createArticle(article)
-    }
+    override suspend fun createArticle(article: Article): Article =
+        transactionProvider.transaction {
+            articleRepository.createArticle(article)
+        }.await()
 }

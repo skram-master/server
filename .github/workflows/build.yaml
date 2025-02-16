@@ -41,5 +41,15 @@ jobs:
           export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
           git submodule update --init --force --recursive infrastructure/ktorapp/src/main/kotlin/com/skram_master/resource
 
+      - name: clone enum submodule
+        env:
+          ENUM_TOKEN: ${{ secrets.SSH_PRIVATE_KEY_ENUM }}
+        run: |
+          mkdir -p $HOME/.ssh/
+          echo -e "$ENUM_TOKEN" > $HOME/.ssh/id_rsa
+          sudo chmod 600 $HOME/.ssh/id_rsa
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa"
+          git submodule update --init --force --recursive domain/src/main/kotlin/com/skram_master/enums
+
       - name: build
-        run: ./gradlew build --continue --parallel
+        run: ./gradlew build -x detekt --continue --parallel

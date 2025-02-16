@@ -1,6 +1,6 @@
 echo "============= Start gradle build for auto reload ============="
 run_started=false
-nohup gradle -t build -x test | while read -r line
+nohup gradle -t build -x detekt -x test | while read -r line
 do
     echo "$line"
     # launch "gradle run" once when the above command puts "Waiting for changes to input files..."

@@ -1,6 +1,6 @@
 package com.skram_master.controller.article
 
-import com.skram_master.domain.model.Article
+import com.skram_master.domain.model.article.Article
 import com.skram_master.domain.service.ArticleService
 import com.skram_master.dto.article.ArticlePostV1Request
 import com.skram_master.dto.article.ArticleV1Response

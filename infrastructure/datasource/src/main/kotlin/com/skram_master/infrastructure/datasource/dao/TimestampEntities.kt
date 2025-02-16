@@ -1,8 +1,8 @@
 package com.skram_master.infrastructure.datasource.dao
 
-import com.skram_master.infrastructure.datasource.entity.TimestampIntIdTable
-import com.skram_master.infrastructure.datasource.entity.TimestampIntUUIDTable
-import com.skram_master.infrastructure.datasource.entity.TimestampLongIdTable
+import com.skram_master.infrastructure.datasource.entity.utils.TimestampIntIdTable
+import com.skram_master.infrastructure.datasource.entity.utils.TimestampLongIdTable
+import com.skram_master.infrastructure.datasource.entity.utils.TimestampUUIDTable
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -17,13 +17,15 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.toEntity
 
-@Suppress("Unused")
-internal abstract class TimestampIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) : IntEntity(id) {
+internal abstract class TimestampIntIdEntity(id: EntityID<Int>, table: TimestampIntIdTable) :
+    IntEntity(id) {
+    @Suppress("Unused")
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: TimestampIntIdTable) :
+@Suppress("Unused")
+internal abstract class TimestampIntIdEntityClass<E : TimestampIntIdEntity>(table: TimestampIntIdTable) :
     IntEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->
@@ -34,13 +36,15 @@ internal abstract class TimestampIdEntityClass<E : TimestampIdEntity>(table: Tim
     }
 }
 
-@Suppress("Unused")
-internal abstract class TimestampLongEntity(id: EntityID<Long>, table: TimestampLongIdTable) : LongEntity(id) {
+internal abstract class TimestampLongIdEntity(id: EntityID<Long>, table: TimestampLongIdTable) :
+    LongEntity(id) {
+    @Suppress("Unused")
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table: TimestampLongIdTable) :
+@Suppress("Unused")
+internal abstract class TimestampLongIdEntityClass<E : TimestampLongIdEntity>(table: TimestampLongIdTable) :
     LongEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->
@@ -51,14 +55,18 @@ internal abstract class TimestampLongEntityClass<E : TimestampLongEntity>(table:
     }
 }
 
-@Suppress("Unused")
-internal abstract class TimestampUUIDEntity(id: EntityID<java.util.UUID>, table: TimestampIntUUIDTable) :
+internal abstract class TimestampUUIDEntity(
+    id: EntityID<java.util.UUID>,
+    table: TimestampUUIDTable,
+) :
     UUIDEntity(id) {
+    @Suppress("Unused")
     val createdAt by table.createdAt
     var updatedAt by table.updatedAt
 }
 
-internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampIntUUIDTable) :
+@Suppress("Unused")
+internal abstract class TimestampUUIDEntityClass<E : TimestampUUIDEntity>(table: TimestampUUIDTable) :
     UUIDEntityClass<E>(table) {
     init {
         EntityHook.subscribe { action ->

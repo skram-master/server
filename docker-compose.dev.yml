@@ -1,44 +1,66 @@
 services:
   app:
+    container_name: ${CONTAINER_NAME_KTOR}
     build:
       context: .
       dockerfile: docker/ktor/dev.Dockerfile
     ports:
       - "8080:8080"
     environment:
-      DATABASE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_URL: ${DATABASE_URL}/${POSTGRES_DB}
+      TEST_DB_USER: ${TEST_DATABASE_URL}/${TEST_POSTGRES_DB}
+      TEST_DB_PASSWORD: ${TEST_POSTGRES_USER}
+      TEST_DATABASE_URL: ${TEST_POSTGRES_PASSWORD}
+      MIGRATIONS_DIRECTORY: ${MIGRATIONS_DIRECTORY}
+      DEVELOPMENT_MODE: ${DEVELOPMENT_MODE}
     volumes:
       - ./detekt:/home/gradle/app/detekt
+      - ./core:/home/gradle/app/core
       - ./infrastructure:/home/gradle/app/infrastructure
       - ./domain:/home/gradle/app/domain
       - ./adapter:/home/gradle/app/adapter
     depends_on:
-      db:
-        condition: service_healthy
-    env_file:
-      - .dev.env
+      - db
+      - test-db
     networks:
       - skram-master-server-network
   db:
+    container_name: ${CONTAINER_NAME_POSTGRES}
     image: postgres:${POSTGRES_VERSION}
     restart: always
     shm_size: 128mb
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_HOST_AUTH_METHOD: trust
-      PGPORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
-      interval: 1s
-    env_file:
-      - .dev.env
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    networks:
+      - skram-master-server-network
+
+  test-db:
+    container_name: ${CONTAINER_NAME_TEST_POSTGRES}
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    shm_size: 32mb
+    ports:
+      - "3241:5432"
+    environment:
+      POSTGRES_DB: ${TEST_POSTGRES_DB}
+      POSTGRES_USER: ${TEST_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${TEST_POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres/init:/docker-entrypoint-initdb.d
     networks:
       - skram-master-server-network
 
   pgadmin:
+    container_name: ${CONTAINER_NAME_PGADMIN}
     image: dpage/pgadmin4:${PGADMIN_VERSION}
     restart: always
     ports:
@@ -46,10 +68,10 @@ services:
     volumes:
       - ./pgadmin:/var/lib/pgadmin
     depends_on:
-      db:
-        condition: service_healthy
-    env_file:
-      - .dev.env
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     networks:
       - skram-master-server-network
 

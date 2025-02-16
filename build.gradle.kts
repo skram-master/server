@@ -45,8 +45,10 @@ subprojects {
 
     afterEvaluate {
         dependencies {
+            testImplementation(thirdPartyLibs.koin.test.junit5)
             testImplementation(thirdPartyLibs.kotest.runner.junit5.jvm)
             testImplementation(thirdPartyLibs.kotest.assertions.core)
+            testImplementation(thirdPartyLibs.kotest.extensions.koin)
             testImplementation(thirdPartyLibs.mockk)
         }
     }

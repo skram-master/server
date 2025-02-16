@@ -1,4 +1,4 @@
-package com.skram_master.infrastructure.datasource.entity
+package com.skram_master.infrastructure.datasource.entity.utils
 
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.shouldBe

@@ -5,11 +5,8 @@ plugins {
     alias(ktorLibs.plugins.io.ktor)
 }
 
-
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
-    // This arg passes the app when running the app from the gradle task
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
 dependencies {
@@ -20,7 +17,6 @@ dependencies {
     implementation(ktorLibs.ktor.server.http.redirect.jvm)
     implementation(ktorLibs.ktor.server.default.headers.jvm)
 
-    implementation(ktorLibs.ktor.server.websockets.jvm)
     implementation(ktorLibs.ktor.server.auth.jvm)
     implementation(ktorLibs.ktor.server.auth.jwt.jvm)
     implementation(ktorLibs.ktor.server.cors.jvm)
@@ -29,9 +25,10 @@ dependencies {
     implementation(ktorLibs.ktor.server.call.logging.jvm)
     implementation(thirdPartyLibs.logback.classic)
 
-
     implementation(ktorLibs.ktor.server.resources.jvm)
     implementation(ktorLibs.ktor.server.content.negotiation.jvm)
+    implementation(ktorLibs.ktor.server.request.validation)
+    implementation(ktorLibs.ktor.server.status.pages)
     implementation(ktorLibs.ktor.serialization.kotlinx.json.jvm)
 
     implementation(thirdPartyLibs.ktor.swagger.ui)
