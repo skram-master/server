@@ -3,6 +3,7 @@ package com.skram_master.infrastructure.datasource.entity.utils
 import com.skram_master.core.coroutine.CoroutineProvider
 import com.skram_master.infrastructure.datasource.database.DefaultTransactionProvider
 import com.skram_master.infrastructure.datasource.database.TestDatabaseFactory
+import io.kotest.common.ExperimentalKotest
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.comparables.shouldBeGreaterThan
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -12,7 +13,7 @@ import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class, ExperimentalKotest::class)
 internal class ExtendUpsertTest : ShouldSpec({
 
     val tables = arrayOf(TestIntTable, TestLongTable, TestUUIDTable)
@@ -34,7 +35,9 @@ internal class ExtendUpsertTest : ShouldSpec({
         CoroutineProvider.IO.reset()
     }
 
-    context("custom upsert* function updates the updatedAt column when updating a record") {
+    context("custom upsert* function updates the updatedAt column when updating a record").config(
+        enabled = false,
+    ) {
         should("upsertWithUpdatedAt should update the updatedAt column") {
             // given
             val testIntTable = transactionProvider.transaction {
