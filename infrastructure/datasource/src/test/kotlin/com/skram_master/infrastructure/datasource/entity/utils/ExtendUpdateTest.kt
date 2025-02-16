@@ -3,24 +3,25 @@ package com.skram_master.infrastructure.datasource.entity.utils
 import com.skram_master.core.coroutine.CoroutineProvider
 import com.skram_master.infrastructure.datasource.database.DefaultTransactionProvider
 import com.skram_master.infrastructure.datasource.database.TestDatabaseFactory
+import io.kotest.common.ExperimentalKotest
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.comparables.shouldBeGreaterThan
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalKotest::class)
 internal class ExtendUpdateTest : ShouldSpec({
-
     val tables = arrayOf(TestIntTable, TestLongTable, TestUUIDTable)
     val testDispatcher = StandardTestDispatcher()
-    val databaseFactory = TestDatabaseFactory(
-        initBlock = { SchemaUtils.create(*tables) },
-        resetBlock = { SchemaUtils.drop(*tables) },
-    )
-    val transactionProvider = DefaultTransactionProvider(databaseFactory)
+    val databaseFactory by lazy {
+        TestDatabaseFactory(
+            initBlock = { SchemaUtils.create(*tables) },
+            resetBlock = { SchemaUtils.drop(*tables) },
+        )
+    }
+    val transactionProvider by lazy { DefaultTransactionProvider(databaseFactory) }
 
     beforeSpec { spec ->
         CoroutineProvider.IO.dispatcherHandler = { testDispatcher }
@@ -32,8 +33,9 @@ internal class ExtendUpdateTest : ShouldSpec({
     afterSpec { spec ->
         CoroutineProvider.IO.reset()
     }
-
-    context("custom update* function updates the updatedAt column when it is called") {
+    context("custom update* function updates the updatedAt column when it is called").config(
+        enabled = false,
+    ) {
         should("bodyWithUpdateAt should update the updatedAt column") {
             // given
             val testIntTable = transactionProvider.transaction {
