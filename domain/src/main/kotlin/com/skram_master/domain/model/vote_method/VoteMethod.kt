@@ -1,6 +1,6 @@
 package com.skram_master.domain.model.vote_method
 
-import com.skram_master.enums.VoteMethodType
+import com.skram_master.enums.vote_method.VoteMethodType
 
 data class VoteMethodOption(
     val value: String,
