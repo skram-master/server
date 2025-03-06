@@ -13,7 +13,7 @@ fun Application.configureSecurity() {
     if (developmentMode.not()) {
         install(CSRF) {
             // tests Origin is an expected value
-            allowOrigin("http://localhost:8080")
+            allowOrigin("http://localhost:8081")
 
             // tests Origin matches Host header
             originMatchesHost()
