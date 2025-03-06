@@ -1,6 +1,6 @@
 package com.skram_master.infrastructure.datasource.entity.room
 
-import com.skram_master.enums.VoteMethodType
+import com.skram_master.enums.VoteMethod.VoteMethodType
 import com.skram_master.infrastructure.datasource.common.vote_method.VoteMethodOption
 import com.skram_master.infrastructure.datasource.entity.utils.TimestampIntIdTable
 import kotlinx.serialization.json.Json

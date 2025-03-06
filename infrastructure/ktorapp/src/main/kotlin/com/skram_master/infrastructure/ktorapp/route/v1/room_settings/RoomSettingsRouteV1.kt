@@ -3,7 +3,7 @@ package com.skram_master.infrastructure.ktorapp.route.v1.room_settings
 import com.skram_master.controller.room_settings.RoomSettingsController
 import com.skram_master.dto.room_settings.GetRoomSettingsInfoV1Response
 import com.skram_master.dto.vote_method.VoteMethodDTO
-import com.skram_master.enums.VoteMethodType
+import com.skram_master.enums.VoteMethod.VoteMethodType
 import com.skram_master.infrastructure.ktorapp.extension.get
 import com.skram_master.resource.room_settings.RoomSettingsV1
 import io.ktor.http.HttpStatusCode
