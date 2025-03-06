@@ -1,6 +1,6 @@
 package com.skram_master.infrastructure.datasource.entity.room
 
-import com.skram_master.enums.VoteMethod.VoteMethodType
+import com.skram_master.enums.vote_method.VoteMethodType
 import com.skram_master.infrastructure.datasource.entity.utils.TimestampIntIdTable
 import org.jetbrains.exposed.sql.ReferenceOption
 

@@ -1,6 +1,6 @@
 package com.skram_master.infrastructure.datasource.constrains.vote_method
 
-import com.skram_master.enums.VoteMethod.VoteMethodType
+import com.skram_master.enums.vote_method.VoteMethodType
 import com.skram_master.infrastructure.datasource.common.vote_method.VoteMethodOption
 
 private val FibonacciOptions =
